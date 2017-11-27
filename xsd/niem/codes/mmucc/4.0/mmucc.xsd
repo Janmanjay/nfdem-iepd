@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema targetNamespace="http://release.niem.gov/niem/codes/mmucc/4.0/" version="1" xsi:schemaLocation="http://release.niem.gov/niem/appinfo/4.0/ ../../../utility/appinfo/4.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../../utility/conformanceTargets/3.0/conformanceTargets.xsd" ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument" xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mmucc="http://release.niem.gov/niem/codes/mmucc/4.0/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:structures="http://release.niem.gov/niem/structures/4.0/">
+  <xs:annotation>
+    <xs:documentation>Source: Model Minimum Uniform Crash Criteria (MMUCC); Publication: MMUCC Guideline - Model Minimum Uniform Crash Criteria - 4th Edition; 
+Version: 4.0; 
+Date: 2012; 
+Source Updates: 2012;</xs:documentation>
+  </xs:annotation>
+  <xs:import schemaLocation="../../../utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
+  <xs:simpleType name="AtmosphericConditionCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for the prevailing atmospheric conditions that existed at the time of the crash.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="0">
+        <xs:annotation>
+          <xs:documentation>No Additional Atmospheric Conditions</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1">
+        <xs:annotation>
+          <xs:documentation>Clear</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="10">
+        <xs:annotation>
+          <xs:documentation>Cloudy</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="11">
+        <xs:annotation>
+          <xs:documentation>Blowing Snow</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="12">
+        <xs:annotation>
+          <xs:documentation>Freezing Rain or Drizzle</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation>Rain</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation>
+          <xs:documentation>Sleet or Hail</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="4">
+        <xs:annotation>
+          <xs:documentation>Snow</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="5">
+        <xs:annotation>
+          <xs:documentation>Fog, Smog, Smoke</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="6">
+        <xs:annotation>
+          <xs:documentation>Severe Crosswinds</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="7">
+        <xs:annotation>
+          <xs:documentation>Blowing Sand, Soil, Dirt</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="8">
+        <xs:annotation>
+          <xs:documentation>Other</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="98">
+        <xs:annotation>
+          <xs:documentation>Not Reported</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="99">
+        <xs:annotation>
+          <xs:documentation>Unknown</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="CrashWeatherConditionCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for the prevailing atmospheric conditions that existed at the time of the crash.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="mmucc:AtmosphericConditionCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema targetNamespace="http://release.niem.gov/niem/codes/census_commodity/4.0/" version="1" xsi:schemaLocation="http://release.niem.gov/niem/appinfo/4.0/ ../../../utility/appinfo/4.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../../utility/conformanceTargets/3.0/conformanceTargets.xsd" ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument" xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:commodity="http://release.niem.gov/niem/codes/census_commodity/4.0/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:structures="http://release.niem.gov/niem/structures/4.0/">
+  <xs:annotation>
+    <xs:documentation>Census and Dept of Transportation.
+Publication: CFS-1200 - SCTG COMMODITY CODES; 
+Date: 11-15-2011</xs:documentation>
+  </xs:annotation>
+  <xs:import schemaLocation="../../../utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
+  <xs:simpleType name="ElectronicInstrumentCategoryCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for a kind of electronic instrument.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="38000">
+        <xs:annotation>
+          <xs:documentation>Precision Instruments and Apparatus</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38100">
+        <xs:annotation>
+          <xs:documentation>Optical elements, instruments, and apparatus</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38101">
+        <xs:annotation>
+          <xs:documentation>Eyewear (includes contact lenses and other lenses, goggles, and frames)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38109">
+        <xs:annotation>
+          <xs:documentation>Other optical elements, instruments, and apparatus, not elsewhere classified (excludes photographic, cinematographic, and photocopying equipment, see 38210 or 38220)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38200">
+        <xs:annotation>
+          <xs:documentation>Photographic and photocopying machines</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38210">
+        <xs:annotation>
+          <xs:documentation>Photographic (includes cinematographic cameras, image projectors, enlargers, reducers, and projection screens; negatoscopes, and apparatus and equipment for film developing) (excludes video, and digital cameras, see 35400)  . . . . .</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38220">
+        <xs:annotation>
+          <xs:documentation>Photocopying and thermo-copying machines  . . .</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38300">
+        <xs:annotation>
+          <xs:documentation>Surveying, hydrographic, oceanographic, hydrological, geophysical, drawing, or length- measuring instruments and appliances, and navigational and meteorological instruments and appliances (excludes radar and other radio-type apparatus)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38310">
+        <xs:annotation>
+          <xs:documentation>Navigational instruments and appliances (excludes radar and radio navigational-aid apparatus, see 35700) .</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38320">
+        <xs:annotation>
+          <xs:documentation>Surveying, hydrographic, oceanographic, hydrological, meteorological, geophysical, drawing, mathematical calculating and length measuring hand instruments and appliances (excludes radar apparatus, see 35700).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38400">
+        <xs:annotation>
+          <xs:documentation>Instruments and apparatus for medical, dental, veterinary, or similar purposes</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38410">
+        <xs:annotation>
+          <xs:documentation>Apparatus based on the use of X-rays oralpha, beta, or gamma radiation</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38420">
+        <xs:annotation>
+          <xs:documentation>Electro-medical equipment (excludes pacemakers, see 38491)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38491">
+        <xs:annotation>
+          <xs:documentation>Orthopedic appliances; fracture appliances; artificial body parts; and appliances that are worn, carried, or implanted in the body to compensate for a medical condition</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38492">
+        <xs:annotation>
+          <xs:documentation>Surgical and medical instruments and apparatus</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38499">
+        <xs:annotation>
+          <xs:documentation>Other instruments, apparatus, and appliances for medical, surgical, dental, or veterinary sciences, or for similar purposes, not elsewhere classified (excludes furniture, see 39021; wheelchairs, see 40999; and wadding, bandages, etc., see 21000)</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38500">
+        <xs:annotation>
+          <xs:documentation>Instruments and apparatus for measuring, checking, testing, or controlling</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38510">
+        <xs:annotation>
+          <xs:documentation>Instruments and apparatus for measuring or checking electrical quantities</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38520">
+        <xs:annotation>
+          <xs:documentation>Industrial process control instruments</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38591">
+        <xs:annotation>
+          <xs:documentation>Instruments and appliances for testing mechanical properties of materials</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38592">
+        <xs:annotation>
+          <xs:documentation>Instruments and appliances for measuring or detecting ionizing radiations</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38593">
+        <xs:annotation>
+          <xs:documentation>Gas or liquid supply or production meters</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="38599">
+        <xs:annotation>
+          <xs:documentation>Other instruments and apparatus for measuring, checking, testing, or controlling, not elsewhere classified</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="ElectronicInstrumentCategoryCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for a kind of electronic instrument.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="commodity:ElectronicInstrumentCategoryCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema targetNamespace="http://release.niem.gov/niem/domains/biometrics/4.0/" version="1" xsi:schemaLocation="http://release.niem.gov/niem/appinfo/4.0/ ../../../utility/appinfo/4.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../../utility/conformanceTargets/3.0/conformanceTargets.xsd" ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument" xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" xmlns:biom="http://release.niem.gov/niem/domains/biometrics/4.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:structures="http://release.niem.gov/niem/structures/4.0/">
+  <xs:annotation>
+    <xs:documentation>Biometric Schema Version 1.0</xs:documentation>
+  </xs:annotation>
+  <xs:import schemaLocation="../../../niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
+  <xs:import schemaLocation="../../../utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
+  <xs:simpleType name="DNAAnalysisQuantityCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for a number of DNA analyses</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:integer">
+      <xs:enumeration value="0">
+        <xs:annotation>
+          <xs:documentation>Multiple</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1">
+        <xs:annotation>
+          <xs:documentation>Single</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DNAAnalysisQuantityCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for a number of DNA analyses</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="biom:DNAAnalysisQuantityCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DNADonorType">
+    <xs:annotation>
+      <xs:documentation>A data type for a subject of a DNA sample</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:PersonType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DNAElectropherogramType">
+    <xs:annotation>
+      <xs:documentation>A data type for a DNA electropherogram</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DNALaboratoryType">
+    <xs:annotation>
+      <xs:documentation>A data type for an organization responsible for processing DNA samples</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="nc:OrganizationType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DNAMitochondrialDataType">
+    <xs:annotation>
+      <xs:documentation>A data type for a description of DNA mitochondrial data</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:simpleType name="DNAProfileResultCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for a DNA profile result code</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:integer">
+      <xs:enumeration value="0">
+        <xs:annotation>
+          <xs:documentation>Unable to process</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1">
+        <xs:annotation>
+          <xs:documentation>No hit</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="10">
+        <xs:annotation>
+          <xs:documentation>User-defined 5</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation>Hit</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation>
+          <xs:documentation>Hit, high/exact</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="4">
+        <xs:annotation>
+          <xs:documentation>Hit, moderate</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="5">
+        <xs:annotation>
+          <xs:documentation>Hit, low</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="6">
+        <xs:annotation>
+          <xs:documentation>Additional results/details</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="7">
+        <xs:annotation>
+          <xs:documentation>User-defined 2</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="8">
+        <xs:annotation>
+          <xs:documentation>User-defined 3</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="9">
+        <xs:annotation>
+          <xs:documentation>User-defined 4</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DNAProfileResultCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for a DNA profile result code</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="biom:DNAProfileResultCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:simpleType name="DNASampleOriginCodeSimpleType">
+    <xs:annotation>
+      <xs:documentation>A data type for a DNA source code</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="BP">
+        <xs:annotation>
+          <xs:documentation>Body Part</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NS">
+        <xs:annotation>
+          <xs:documentation>Not Specified</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WB">
+        <xs:annotation>
+          <xs:documentation>Whole Body</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="DNASampleOriginCodeType">
+    <xs:annotation>
+      <xs:documentation>A data type for a DNA source code</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="biom:DNASampleOriginCodeSimpleType">
+        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="DNASampleOriginType">
+    <xs:annotation>
+      <xs:documentation>A data type for a description of the cellular type and origin of a DNA sample</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="DNASampleType">
+    <xs:annotation>
+      <xs:documentation>A data type for a DNA sample</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="structures:ObjectType"/>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BiometricDetailAbstract" abstract="true">
+    <xs:annotation>
+      <xs:documentation>A data concept for capturing details.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNAAnalysisQuantityCode" type="biom:DNAAnalysisQuantityCodeType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A number of analyses in this record</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNABatchIdentification" type="nc:IdentificationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identification of a DNA batch to which a locus belongs</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNACommentText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A kind of comment regarding a DNA sample</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNADonor" type="biom:DNADonorType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of the subject of a DNA sample</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNADonorCollectionLocationDescriptionText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of the location where the DNA donor's sample was collected</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNAElectropherogram" type="biom:DNAElectropherogramType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A DNA electropherogram</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNAElectropherogramLadder" type="biom:DNAElectropherogramType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A ladder/control sample DNA electropherogram</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNAElectropherogramLadderIdentification" type="nc:IdentificationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identification of a DNA electropherogram ladder image</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNAKitDescriptionText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of a DNA kit</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNALaboratory" type="biom:DNALaboratoryType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An organization responsible for processing DNA samples</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNALocusIdentification" type="nc:IdentificationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identification of a DNA locus</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNAMitochondrialData" type="biom:DNAMitochondrialDataType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of DNA mitochondrial data</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNAProfileCommentText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A descriptive comment about a DNA profile</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNAProfileIdentification" type="nc:IdentificationType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An identification of a DNA profile</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNAProfileResultCode" type="biom:DNAProfileResultCodeType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A kind of DNA profile result</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNASample" type="biom:DNASampleType" substitutionGroup="biom:BiometricDetailAbstract" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A representation or an encoding of the DNA data of a biological sample.  This may be the biological sample from a person (e.g. sample from an insurgent), or a mixed biological sample that may contain biological material from the person of interest (e.g. a mixed blood stain taken from clothes)</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNASampleCollectionMethodText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of the method used to collect a DNA sample</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNASampleOrigin" type="biom:DNASampleOriginType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>A description of the cellular type and origin of a DNA sample</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="DNASampleOriginCode" type="biom:DNASampleOriginCodeType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An origin of a DNA sample</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="QualityThresholdText" type="nc:TextType" nillable="true">
+    <xs:annotation>
+      <xs:documentation>An acceptance level of the accuracy and readability of the recorded PERSON BIOMETRIC</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+</xs:schema>
