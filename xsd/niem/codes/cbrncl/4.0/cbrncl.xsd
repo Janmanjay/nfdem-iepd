@@ -8,22 +8,6 @@ Date: Oct 2013;
 http://release.niem.gov/niem/3.0/</xs:documentation>
   </xs:annotation>
   <xs:import schemaLocation="../../../utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
-  <xs:simpleType name="MeasurementClassCodeSimpleType">
-    <xs:annotation>
-      <xs:documentation>A data type that defines the code values for the classes of spectrum measurements that a radiation instrument can acquire for different kinds of radioactive sources or radiation fields.</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:token"/>
-  </xs:simpleType>
-  <xs:complexType name="MeasurementClassCodeType">
-    <xs:annotation>
-      <xs:documentation>A data type for the classes of spectrum measurements that a radiation instrument can acquire for different kinds of radioactive sources or radiation fields.</xs:documentation>
-    </xs:annotation>
-    <xs:simpleContent>
-      <xs:extension base="cbrncl:MeasurementClassCodeSimpleType">
-        <xs:attributeGroup ref="structures:SimpleObjectAttributeGroup"/>
-      </xs:extension>
-    </xs:simpleContent>
-  </xs:complexType>
   <xs:simpleType name="RadDetectorCategoryCodeSimpleType">
     <xs:annotation>
       <xs:documentation>A data type that defines the various code values for the categories of radiation detectors based on the type of particles and/or photon emission that can be detect from a radiological or nuclear substance.</xs:documentation>

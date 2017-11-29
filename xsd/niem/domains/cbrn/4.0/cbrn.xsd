@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="US-ASCII"?>
-<xs:schema targetNamespace="http://release.niem.gov/niem/domains/cbrn/4.0/" version="1" xsi:schemaLocation="http://release.niem.gov/niem/appinfo/4.0/ ../../../utility/appinfo/4.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../../utility/conformanceTargets/3.0/conformanceTargets.xsd" ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument" xmlns:cbrn="http://release.niem.gov/niem/domains/cbrn/4.0/" xmlns:cbrncl="http://release.niem.gov/niem/codes/cbrncl/4.0/" xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/">
+<xs:schema targetNamespace="http://release.niem.gov/niem/domains/cbrn/4.0/" version="1" xsi:schemaLocation="http://release.niem.gov/niem/appinfo/4.0/ ../../../utility/appinfo/4.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../../utility/conformanceTargets/3.0/conformanceTargets.xsd" ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument" xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cbrn="http://release.niem.gov/niem/domains/cbrn/4.0/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:structures="http://release.niem.gov/niem/structures/4.0/" xmlns:cbrncl="http://release.niem.gov/niem/codes/cbrncl/4.0/">
   <xs:annotation>
     <xs:documentation>Chemical, Biological, Radiological, and Nuclear Domain</xs:documentation>
   </xs:annotation>
   <xs:import schemaLocation="../../../codes/cbrncl/4.0/cbrncl.xsd" namespace="http://release.niem.gov/niem/codes/cbrncl/4.0/"/>
-  <xs:import schemaLocation="../../../niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
   <xs:import schemaLocation="../../../proxy/xsd/4.0/xs.xsd" namespace="http://release.niem.gov/niem/proxy/xsd/4.0/"/>
   <xs:import schemaLocation="../../../utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
   <xs:complexType name="AnalysisResultsType">
@@ -200,33 +199,6 @@
       <xs:extension base="cbrn:RemarksComplexObjectType"/>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="RadItemQuantityType">
-    <xs:annotation>
-      <xs:documentation>A data type for expressing a quantity measure of a item that is the source of the radiation measurement contained in this xml document.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="cbrn:RemarksComplexObjectType">
-        <xs:sequence>
-          <xs:element ref="cbrn:RadItemQuantityValue" minOccurs="1" maxOccurs="1"/>
-          <xs:element ref="cbrn:RadItemQuantityUnitText" minOccurs="1" maxOccurs="1"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="RadMeasurementType">
-    <xs:annotation>
-      <xs:documentation>A data type for a set of radiation measurements that were taken in the same time period.</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="cbrn:RemarksComplexObjectType">
-        <xs:sequence>
-          <xs:element ref="cbrn:MeasurementClassCode" minOccurs="1" maxOccurs="1"/>
-          <xs:element ref="cbrn:StartDateTime" minOccurs="1" maxOccurs="1"/>
-          <xs:element ref="cbrn:RealTimeDuration" minOccurs="1" maxOccurs="1"/>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="RelativeLocationType">
     <xs:annotation>
       <xs:documentation>A data type for describing the relative location of an object.</xs:documentation>
@@ -262,41 +234,6 @@
       <xs:documentation>A collection of information resulting from an analysis of radiation measurements or derived data.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="AnalysisStartDateTime" type="niem-xs:dateTime" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A date and time at which an analysis was started.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="CalibrationDateTime" type="niem-xs:dateTime" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A date and time at which a calibration was put into service.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="CaseUUID" type="niem-xs:string" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A universally unique identifier for a case.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="DataFileChoiceAbstract" abstract="true">
-    <xs:annotation>
-      <xs:documentation>A data concept for a digital data file.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="DataFileLastModifiedDateTime" type="niem-xs:dateTime" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A time stamp identifying when a data file was last modified.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="DetectionEventUserEntryData" type="cbrn:DetectionEventUserEntryDataType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A set of user-operator entered data relevant to a Detection Event.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="DeviceOperatorCommentsText" type="niem-xs:string" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A user-operator entered comment.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
   <xs:element name="DoseRate" type="cbrn:DoseRateType" nillable="true">
     <xs:annotation>
       <xs:documentation>A measured ambient dose equivalent rate, provided as a value and/or a qualitative description.</xs:documentation>
@@ -307,34 +244,9 @@
       <xs:documentation>A  measured ambient radiation dose equivalent rate value, in microsieverts per hour (Sv/h).</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="EncounterDeviceIdentificationData" type="cbrn:DeviceIdentificationType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>An encounter device's identification information.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="EntryPersonID" type="niem-xs:string" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A unique identifier of the person who entered or confirmed a measured item identifier.  There is no required format for the ID</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="ImageFile" type="cbrn:ImageFileType" substitutionGroup="cbrn:DataFileChoiceAbstract" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A digital image data file.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="InspectionEventDateTime" type="niem-xs:dateTime" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A DateTime of an inspection event.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
   <xs:element name="LowerLimitValue" type="cbrn:DoubleType" nillable="true">
     <xs:annotation>
       <xs:documentation>A lowest value of X for which an equation is valid.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="MeasurementClassCode" type="cbrncl:MeasurementClassCodeType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>An indicator A code indicating whether the data are a measurement of an item (Foreground), an environmental background (Background), a calibration source (Calibration), the intrinsic activity of the radiation measurement instrument (IntrinsicActivity), or not specified (NotSpecified).</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="NuclideActivityUncertaintyValue" type="cbrn:NuclideActivityUncertaintyType" nillable="true">
@@ -355,11 +267,6 @@
   <xs:element name="RadDetectorCategoryCode" type="cbrncl:RadDetectorCategoryCodeType" nillable="true">
     <xs:annotation>
       <xs:documentation>A code for a general category of radiation detected; e.g., Gamma, Neutron.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="RadDetectorInformation" type="cbrn:RadDetectorInformationType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A set of information regarding a radiation detector.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="RadDetectorKindCode" type="cbrncl:RadDetectorKindCodeType" nillable="true">
@@ -387,11 +294,6 @@
       <xs:documentation>A data concept for a variant of data that is generated by the rad instrument.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="RadInstrumentID" type="cbrn:NonBlankStringType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A unique Identifier for the specific radiation measurement instrument; such as serial number or asset tag number.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
   <xs:element name="RadInstrumentInformation" type="cbrn:RadInstrumentInformationType" nillable="true">
     <xs:annotation>
       <xs:documentation>A set of information that describes a radiation measurement instrument.</xs:documentation>
@@ -412,79 +314,9 @@
       <xs:documentation>A description of the versions of the various components of a radiation measurement instrument.  At a minimum, there shall be an instance of this element with the component name Software that describes the version of the software and/or firmware that collected the radiation data that is reported by a radiation detection instrument.</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="RadItemInformation" type="cbrn:RadItemInformationType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A set of information describing a measured item.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="RadItemQuantity" type="cbrn:RadItemQuantityType">
-    <xs:annotation>
-      <xs:documentation>A count or size of the item being measured, and its uncertainty.  The units and interpretation of this value will be application-specific, but will normally be the weight or volume of the measured item, used in the calculation of item activity concentration.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="RadItemQuantityUnitText" type="cbrn:NonBlankStringType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A unit of measure for the measured item quantity value.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="RadItemQuantityValue" type="cbrn:PositiveDoubleType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>An amount or size of an item being measured.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="RadMeasurement" type="cbrn:RadMeasurementType" substitutionGroup="cbrn:RadInstrumentDataChoiceAbstract" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A set of data for a radiation measurement at a particular StartDateTime, for a RealTimeDuration, of a particular MeasurementClassCode that consists of readings from any number of one or more of the following:  -  a radiation detector  - an occupancy sensor  - a positioning sensor that captures the location of a radiation measurement instrument, radiation detector, or measured item - the state of a radiation measurement instrument, radiation detector, or measured item</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="RealTimeDuration" type="niem-xs:duration" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A total clock time (in ISO 8601 format) expended by an instrument in collecting a measurement; the duration shall be greater than zero.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="RelativeLocation" type="cbrn:RelativeLocationType" substitutionGroup="cbrn:StateVectorLocationChoiceAbstract" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A set of information describing the location of an object (i.e., radiation measurement instrument, radiation detector, or measured item) or a radiation source relative to a reference point (Origin).</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="RemarkText" type="nc:TextType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A placeholder for comments intended to help the consumer of the data to understand better the information encapsulated by the parent element.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
   <xs:element name="ReportDateTime" type="niem-xs:dateTime" nillable="true">
     <xs:annotation>
       <xs:documentation>A DateTime when a report was created.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="SiteSpecialInfoText" type="nc:TextType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A description of a site that may contain information of importance to a responder; e.g.,  electrified fence, dogs on property, loft apartment, multi-storied building, multiple warehouses on site, hazardous material, etc.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="SpecialEventEndDateTime" type="niem-xs:dateTime" nillable="true">
-    <xs:annotation>
-      <xs:documentation>An ending date and time of a special event.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="SpecialEventName" type="niem-xs:string" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A Name of a special event.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="StartDateTime" type="niem-xs:dateTime" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A time corresponding to the start of the collection of the data contained in a particular measurement.</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="StateVectorLocationChoiceAbstract" abstract="true">
-    <xs:annotation>
-      <xs:documentation>A data concept for various location representation types</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="SystemEventDateTime" type="niem-xs:dateTime" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A date and time of a system event.</xs:documentation>
     </xs:annotation>
   </xs:element>
   <xs:element name="UpperLimitValue" type="cbrn:DoubleType" nillable="true">

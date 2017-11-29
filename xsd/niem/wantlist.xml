@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <w:WantList w:release="4.0" w:product="NIEM" w:nillableDefault="true"
-  xmlns:commodity="http://release.niem.gov/niem/codes/census_commodity/4.0/"
   xmlns:cbrn="http://release.niem.gov/niem/domains/cbrn/4.0/"
+  xmlns:commodity="http://release.niem.gov/niem/codes/census_commodity/4.0/"
   xmlns:w="http://niem.gov/niem/wantlist/2.2"
   xmlns:hs="http://release.niem.gov/niem/domains/humanServices/4.0/"
   xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
@@ -10,9 +10,7 @@
   xmlns:j="http://release.niem.gov/niem/domains/jxdm/6.0/"
   xmlns:em="http://release.niem.gov/niem/domains/emergencyManagement/4.0/"
   xmlns:mmucc="http://release.niem.gov/niem/codes/mmucc/4.0/"
-  xmlns:it="http://release.niem.gov/niem/domains/internationalTrade/4.0/"
-  xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/" xmlns:m="http://release.niem.gov/niem/domains/maritime/4.0/">
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/">
   <w:Attribute w:name="cbrn:sequenceNumeric"/>
   <w:Element w:name="biom:DNAAnalysisQuantityCode" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="biom:DNABatchIdentification" w:isReference="false" w:nillable="true"/>
@@ -38,123 +36,39 @@
     w:isReference="false" w:nillable="true"/>
   <w:Element w:name="biom:DNASampleOrigin" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="biom:DNASampleOriginCode" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="biom:QualityThresholdText" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="cbrn:AnalysisResults" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:AnalysisStartDateTime" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:CalibrationDateTime" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:CaseUUID" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:DataFileLastModifiedDateTime"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:DetectionEventUserEntryData"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:DeviceOperatorCommentsText"
-    w:isReference="false" w:nillable="true"/>
   <w:Element w:name="cbrn:DoseRate" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="cbrn:DoseRateValue" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:EncounterDeviceIdentificationData"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:EntryPersonID" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:ImageFile" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:InspectionEventDateTime" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="cbrn:LowerLimitValue" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="cbrn:NuclideActivityUncertaintyValue"
     w:isReference="false" w:nillable="true"/>
   <w:Element w:name="cbrn:NuclideMinimumDetectableActivityValue"
     w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:RadDetectorInformation" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:RadInstrumentID" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="cbrn:RadInstrumentInformation"
     w:isReference="false" w:nillable="true"/>
   <w:Element w:name="cbrn:RadInstrumentModelName" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:RadItemInformation" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:RadItemQuantity" w:isReference="false" w:nillable="false"/>
-  <w:Element w:name="cbrn:RadMeasurement" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:RealTimeDuration" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:RelativeLocation" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:RemarkText" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="cbrn:ReportDateTime" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:SiteSpecialInfoText" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:SpecialEventEndDateTime" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:SpecialEventName" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:StartDateTime" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="cbrn:SystemEventDateTime" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="cbrn:UpperLimitValue" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="em:ArrivalDateTime" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="em:CheckInOutDateTime" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="em:DepartureDateTime" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="em:JobTitleOrRoleName" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="em:Organization" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="em:PersonIDCard" w:isReference="false" w:nillable="false"/>
-  <w:Element w:name="em:ReferenceInformation" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="em:TeamDescriptionText" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="em:UpdateBy" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="hs:MedicalHealthDetails" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="it:SequenceNumeric" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="j:ConveyanceRegistrationPlateIdentification"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="j:CustodyTransferReceivingEnforcementOfficial"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="j:CustodyTransferReleasingEnforcementOfficial"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="j:EvidenceCollector" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="j:EvidenceNumberIdentification"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="j:IncidentLightingText" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="j:IncidentWeatherMMUCCCode" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="j:PersonStateFingerprintIdentification"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="j:Signature" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="j:SubjectSupervisedEmploymentEndDateTime"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="j:SubjectSupervisedEmploymentStartDateTime"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="j:TestCollectionSampleCategoryText"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="j:TestCollectionSampleID" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="j:TestMethodText" w:isReference="false" w:nillable="false"/>
-  <w:Element w:name="m:CrewList" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="nc:Address" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:AddressFullText" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="nc:Agency" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:AssessmentAssessor" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:CommentText" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:ContactRadio" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="nc:ContactTelephoneNumber" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="nc:CoordinatingAgency" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="nc:Date" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:DescriptionText" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:DocumentContributor" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:ElectronicInstrument" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:ElectronicInstrumentCategoryCode"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:FacilityName" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:ItemDescriptionText" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:ItemOtherIdentification" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:ItemQuantity" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:ItemStatus" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:Location2DGeospatialCoordinate"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:MeasureUnitText" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="nc:Mission" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:OrganizationSubUnit" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="nc:OrganizationUnit" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="nc:PersonFullName" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:PersonStateIdentification" w:isReference="false" w:nillable="true"/>
   <w:Element w:name="nc:QualityComment" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:SiteSpecialInformationText"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:SourceText" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:StatusCommentText" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:SubstanceContainerDescriptionText"
-    w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:TelephoneNumberFullID" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:VolumeMeasure" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:VolumeUnitCode" w:isReference="false" w:nillable="true"/>
-  <w:Element w:name="nc:WeightMeasure" w:isReference="false" w:nillable="true"/>
   <w:Type w:name="biom:DNAAnalysisQuantityCodeSimpleType" w:isRequested="false">
     <w:Facet w:facet="enumeration" w:value="0"/>
     <w:Facet w:facet="enumeration" w:value="1"/>
   </w:Type>
+  <w:Type w:name="biom:DNAAnalysisQuantityCodeType" w:isRequested="true"/>
+  <w:Type w:name="biom:DNADonorType" w:isRequested="true"/>
+  <w:Type w:name="biom:DNAElectropherogramType" w:isRequested="true"/>
+  <w:Type w:name="biom:DNALaboratoryType" w:isRequested="true"/>
+  <w:Type w:name="biom:DNAMitochondrialDataType" w:isRequested="true"/>
   <w:Type w:name="biom:DNAProfileResultCodeSimpleType" w:isRequested="false">
     <w:Facet w:facet="enumeration" w:value="0"/>
     <w:Facet w:facet="enumeration" w:value="1"/>
@@ -168,11 +82,28 @@
     <w:Facet w:facet="enumeration" w:value="8"/>
     <w:Facet w:facet="enumeration" w:value="9"/>
   </w:Type>
+  <w:Type w:name="biom:DNAProfileResultCodeType" w:isRequested="true"/>
   <w:Type w:name="biom:DNASampleOriginCodeSimpleType" w:isRequested="false">
     <w:Facet w:facet="enumeration" w:value="BP"/>
     <w:Facet w:facet="enumeration" w:value="NS"/>
     <w:Facet w:facet="enumeration" w:value="WB"/>
   </w:Type>
+  <w:Type w:name="biom:DNASampleOriginCodeType" w:isRequested="true"/>
+  <w:Type w:name="biom:DNASampleType" w:isRequested="true"/>
+  <w:Type w:name="cbrn:AnalysisResultsType" w:isRequested="true"/>
+  <w:Type w:name="cbrn:DetectionEventUserEntryDataType" w:isRequested="true"/>
+  <w:Type w:name="cbrn:DeviceIdentificationType" w:isRequested="true"/>
+  <w:Type w:name="cbrn:DoseRateType" w:isRequested="true"/>
+  <w:Type w:name="cbrn:DoseRateuSvhType" w:isRequested="true"/>
+  <w:Type w:name="cbrn:DoubleType" w:isRequested="true"/>
+  <w:Type w:name="cbrn:ImageFileType" w:isRequested="true"/>
+  <w:Type w:name="cbrn:NonBlankStringType" w:isRequested="true"/>
+  <w:Type w:name="cbrn:NuclideActivityUncertaintyType" w:isRequested="true"/>
+  <w:Type w:name="cbrn:NuclideMDAType" w:isRequested="true"/>
+  <w:Type w:name="cbrn:RadDetectorInformationType" w:isRequested="true"/>
+  <w:Type w:name="cbrn:RadInstrumentInformationType" w:isRequested="true"/>
+  <w:Type w:name="cbrn:RadItemInformationType" w:isRequested="true"/>
+  <w:Type w:name="cbrn:RelativeLocationType" w:isRequested="true"/>
   <w:Type w:name="commodity:ElectronicInstrumentCategoryCodeSimpleType" w:isRequested="false">
     <w:Facet w:facet="enumeration" w:value="38000"/>
     <w:Facet w:facet="enumeration" w:value="38100"/>
@@ -198,6 +129,8 @@
     <w:Facet w:facet="enumeration" w:value="38593"/>
     <w:Facet w:facet="enumeration" w:value="38599"/>
   </w:Type>
+  <w:Type w:name="hs:MedicalHealthDetailsType" w:isRequested="true"/>
+  <w:Type w:name="j:SignatureType" w:isRequested="true"/>
   <w:Type w:name="mmucc:AtmosphericConditionCodeSimpleType" w:isRequested="false">
     <w:Facet w:facet="enumeration" w:value="0"/>
     <w:Facet w:facet="enumeration" w:value="1"/>
@@ -214,9 +147,32 @@
     <w:Facet w:facet="enumeration" w:value="98"/>
     <w:Facet w:facet="enumeration" w:value="99"/>
   </w:Type>
+  <w:Type w:name="mmucc:CrashWeatherConditionCodeType" w:isRequested="true"/>
+  <w:Type w:name="nc:CommentType" w:isRequested="true"/>
+  <w:Type w:name="nc:ContactRadioType" w:isRequested="true"/>
+  <w:Type w:name="nc:IdentificationType" w:isRequested="true"/>
+  <w:Type w:name="nc:ItemType" w:isRequested="true"/>
+  <w:Type w:name="nc:Location2DGeospatialCoordinateType" w:isRequested="true"/>
   <w:Type w:name="nc:LocationType" w:isRequested="true"/>
+  <w:Type w:name="nc:MissionType" w:isRequested="true"/>
+  <w:Type w:name="nc:NumericType" w:isRequested="true"/>
   <w:Type w:name="nc:OrganizationType" w:isRequested="true"/>
+  <w:Type w:name="nc:PersonNameTextType" w:isRequested="true"/>
+  <w:Type w:name="nc:PersonType" w:isRequested="true"/>
+  <w:Type w:name="nc:ProperNameTextType" w:isRequested="true"/>
+  <w:Type w:name="nc:QuantityType" w:isRequested="true"/>
+  <w:Type w:name="nc:StatusType" w:isRequested="true"/>
+  <w:Type w:name="nc:TelephoneNumberType" w:isRequested="true"/>
+  <w:Type w:name="nc:TextType" w:isRequested="true"/>
+  <w:Type w:name="nc:VolumeMeasureType" w:isRequested="true"/>
+  <w:Type w:name="nc:WeightMeasureType" w:isRequested="true"/>
   <w:Type w:name="niem-xs:boolean" w:isRequested="true"/>
+  <w:Type w:name="niem-xs:date" w:isRequested="true"/>
+  <w:Type w:name="niem-xs:dateTime" w:isRequested="true"/>
+  <w:Type w:name="niem-xs:decimal" w:isRequested="true"/>
+  <w:Type w:name="niem-xs:duration" w:isRequested="true"/>
+  <w:Type w:name="niem-xs:nonNegativeInteger" w:isRequested="true"/>
+  <w:Type w:name="niem-xs:string" w:isRequested="true"/>
   <w:Type w:name="unece:VolumeUnitCodeSimpleType" w:isRequested="false">
     <w:Facet w:facet="enumeration" w:value="4G"/>
     <w:Facet w:facet="enumeration" w:value="5I"/>
@@ -280,5 +236,6 @@
     <w:Facet w:facet="enumeration" w:value="QTL"/>
     <w:Facet w:facet="enumeration" w:value="YDQ"/>
   </w:Type>
+  <w:Type w:name="unece:VolumeUnitCodeType" w:isRequested="true"/>
   <w:Type w:name="xs:boolean" w:isRequested="true"/>
 </w:WantList>

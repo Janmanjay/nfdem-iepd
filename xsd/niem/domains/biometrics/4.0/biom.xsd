@@ -284,9 +284,4 @@
       <xs:documentation>An origin of a DNA sample</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="QualityThresholdText" type="nc:TextType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>An acceptance level of the accuracy and readability of the recorded PERSON BIOMETRIC</xs:documentation>
-    </xs:annotation>
-  </xs:element>
 </xs:schema>

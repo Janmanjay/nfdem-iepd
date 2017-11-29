@@ -1,62 +1,13 @@
 <?xml version="1.0" encoding="US-ASCII"?>
-<xs:schema targetNamespace="http://release.niem.gov/niem/domains/emergencyManagement/4.0/" version="1" xsi:schemaLocation="http://release.niem.gov/niem/appinfo/4.0/ ../../../utility/appinfo/4.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../../utility/conformanceTargets/3.0/conformanceTargets.xsd" ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument" xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/" xmlns:em="http://release.niem.gov/niem/domains/emergencyManagement/4.0/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:structures="http://release.niem.gov/niem/structures/4.0/">
+<xs:schema targetNamespace="http://release.niem.gov/niem/domains/emergencyManagement/4.0/" version="1" xsi:schemaLocation="http://release.niem.gov/niem/appinfo/4.0/ ../../../utility/appinfo/4.0/appinfo.xsd http://release.niem.gov/niem/conformanceTargets/3.0/ ../../../utility/conformanceTargets/3.0/conformanceTargets.xsd" ct:conformanceTargets="http://reference.niem.gov/niem/specification/naming-and-design-rules/4.0/#ReferenceSchemaDocument" xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:em="http://release.niem.gov/niem/domains/emergencyManagement/4.0/" xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:structures="http://release.niem.gov/niem/structures/4.0/">
   <xs:annotation>
     <xs:documentation>Emergency Management</xs:documentation>
   </xs:annotation>
-  <xs:import schemaLocation="../../../niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
   <xs:import schemaLocation="../../../proxy/xsd/4.0/xs.xsd" namespace="http://release.niem.gov/niem/proxy/xsd/4.0/"/>
   <xs:import schemaLocation="../../../utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/>
-  <xs:complexType name="PersonIDCardType">
-    <xs:annotation>
-      <xs:documentation>A data type for a credential class that represents the identification of a human resource</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="nc:IdentificationType"/>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:element name="ArrivalDateTime" type="niem-xs:dateTime" nillable="true">
     <xs:annotation>
       <xs:documentation>A date that a resource arrived at the route location</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="CheckInOutDateTime" type="niem-xs:dateTime" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A data element for check in/out date and time</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="DepartureDateTime" type="niem-xs:dateTime" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A date the resource departs the route location</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="JobTitleOrRoleName" type="nc:TextType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A textual name of a person's job title or role</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="Organization" type="nc:OrganizationType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>An Organization derived from niem core OrganizationType</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="PersonIDCard" type="em:PersonIDCardType">
-    <xs:annotation>
-      <xs:documentation>An element contains information about a person  identiification information</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="ReferenceInformation" type="nc:EntityType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A data element that has the reference information of a person's experience</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="TeamDescriptionText" type="nc:TextType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>A data element for the textual description of a team</xs:documentation>
-    </xs:annotation>
-  </xs:element>
-  <xs:element name="UpdateBy" type="nc:IdentificationType" nillable="true">
-    <xs:annotation>
-      <xs:documentation>An element identifies the person/system  updated the data</xs:documentation>
     </xs:annotation>
   </xs:element>
 </xs:schema>

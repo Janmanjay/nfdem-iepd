@@ -4,13 +4,15 @@
     targetNamespace="http://www.dtechspace.com/xml-schema/nfdem/0.5/" version="0.5"
     xmlns:nfdem="http://www.dtechspace.com/xml-schema/nfdem/0.5/"
     xmlns:nc="http://release.niem.gov/niem/niem-core/4.0/"
-    xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/" 
-    xmlns:structures="http://release.niem.gov/niem/structures/4.0/" 
-    xmlns:appinfo="http://release.niem.gov/niem/appinfo/4.0/" 
+    xmlns:niem-xs="http://release.niem.gov/niem/proxy/xsd/4.0/"     
     xmlns:ct="http://release.niem.gov/niem/conformanceTargets/3.0/" 
-    xmlns:term="http://release.niem.gov/niem/localTerminology/4.0/"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-    
+    xmlns:cbrn="http://release.niem.gov/niem/domains/cbrn/4.0/"
+    xmlns:jxdm="http://release.niem.gov/niem/domains/jxdm/6.0/"
+    xmlns:mmucc="http://release.niem.gov/niem/codes/mmucc/4.0/"
+    xmlns:unece="http://release.niem.gov/niem/codes/unece_rec20/4.0/"
+    xmlns:biom="http://release.niem.gov/niem/domains/biometrics/4.0/"
+    xmlns:hs="http://release.niem.gov/niem/domains/humanServices/4.0/"
     elementFormDefault="qualified"> 
 
     <xs:annotation>
@@ -21,39 +23,735 @@
     
     <xs:import schemaLocation="../niem/niem-core/4.0/niem-core.xsd" namespace="http://release.niem.gov/niem/niem-core/4.0/"/>
     <xs:import schemaLocation="../niem/proxy/xsd/4.0/xs.xsd" namespace="http://release.niem.gov/niem/proxy/xsd/4.0/"/>
+    <xs:import schemaLocation="../niem/domains/cbrn/4.0/cbrn.xsd" namespace="http://release.niem.gov/niem/domains/cbrn/4.0/"/>
+    <xs:import schemaLocation="../niem/domains/jxdm/6.0/jxdm.xsd" namespace="http://release.niem.gov/niem/domains/jxdm/6.0/"/>
+    <xs:import schemaLocation="../niem/codes/mmucc/4.0/mmucc.xsd" namespace="http://release.niem.gov/niem/codes/mmucc/4.0/"/>
+    <xs:import schemaLocation="../niem/codes/unece_rec20/4.0/unece_rec20-misc.xsd" namespace="http://release.niem.gov/niem/codes/unece_rec20/4.0/"/>
+    <xs:import schemaLocation="../niem/domains/biometrics/4.0/biom.xsd" namespace="http://release.niem.gov/niem/domains/biometrics/4.0/"/>
+    <xs:import schemaLocation="../niem/domains/humanServices/4.0/hs.xsd" namespace="http://release.niem.gov/niem/domains/humanServices/4.0/"/>
     <!--xs:import schemaLocation="../niem/utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/-->
 
     <xs:element name="AdminWorksheet" type="nfdem:AdminWorksheetType">
         <xs:annotation><xs:documentation>
-            AdminWorksheet document corresponds to the admin worksheet form for crime scene investigation.
+            AdminWorksheet document corresponds to the Administrative Worksheet form for crime scene investigation.
         </xs:documentation></xs:annotation>
     </xs:element>
 	
     <xs:complexType name="AdminWorksheetType">
         <xs:annotation>
         	<xs:documentation>
-            XML Schema type for AdminWorksheet element.
+        	    XML Schema type for AdminWorksheet element which corresponds to the Administrative Worksheet form for crime scene investigation.
         	</xs:documentation>
         </xs:annotation>
         <xs:sequence>
             <xs:element ref="nfdem:CaseIdentifier"/>
             <xs:element ref="nfdem:GeoLocation"/>
             <xs:element ref="nfdem:Description"/>
+            <xs:element ref="nfdem:FullName"/>
+            <xs:element ref="nfdem:LightingCondition"/>
+            <xs:element ref="nfdem:PersonPresentOnArrival"/>
+            <xs:element ref="nfdem:PreparedBy"/>
+            <xs:element ref="nfdem:WeatherCondition"/>
+            <xs:element ref="nfdem:ArrivalDateTime"/>
+            <xs:element ref="nfdem:AssistantPreparer"/>
         </xs:sequence>
     </xs:complexType>
+    
+    <xs:element name="RadiationSurveyInfo" type="nfdem:RadiationSurveyInfoType">
+        <xs:annotation><xs:documentation>
+            RadiationSurveyInfo document corresponds to the Radiation Survey Information form for crime scene investigation.
+        </xs:documentation></xs:annotation>
+    </xs:element>
     
     <xs:complexType name="RadiationSurveyInfoType">
         <xs:annotation>
             <xs:documentation>
-                XML Schema type for RadiationSurveyInfo element.
+                XML Schema type for RadiationSurveyInfo element which corresponds to the Radiation Survey Information form for crime scene investigation.
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
             <xs:element ref="nfdem:CaseIdentifier"/>
             <xs:element ref="nfdem:GeoLocation"/>
+            <xs:element ref="cbrn:DoseRateValue"/>
+            <xs:element ref="nfdem:InstrumentCalibrationDateTime"/>
+            <xs:element ref="nfdem:PreparedBy"/>
+            <xs:element ref="cbrn:RadInstrumentInformation"/>
+            <xs:element ref="cbrn:RadInstrumentModelName"/>
+            <xs:element ref="nfdem:SequenceNumber"/>
+            <xs:element ref="nfdem:Signature"/>
+            <xs:element ref="nfdem:SurveyLocationMapInformation"/>
         </xs:sequence>
     </xs:complexType>
     
+    <xs:element name="PersonalRadMonitoringLog" type="nfdem:PersonalRadMonitoringLogType">
+        <xs:annotation><xs:documentation>
+            PersonalRadMonitoringLog document corresponds to the Personal External Radiation Monitoring Log for crime scene investigation.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="PersonalRadMonitoringLogType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PersonalRadMonitoringLog element which corresponds to the Personal External Radiation Monitoring Log for crime scene investigation.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:Comment"/>
+            <xs:element ref="cbrn:DoseRateValue"/>
+            <xs:element ref="nfdem:DosimeterType"/>
+            <xs:element ref="nfdem:PersonMonitored"/>
+            <xs:element ref="nfdem:PersonMonitoredIdentification"/>
+            <xs:element ref="nfdem:PreparedBy"/>
+            <xs:element ref="cbrn:RadInstrumentInformation"/>
+            <xs:element ref="cbrn:RadInstrumentModelName"/>
+            <xs:element ref="nfdem:ReadingDateTime"/>
+            <xs:element ref="nfdem:ReadingTimeDuration"/>
+            <xs:element ref="nfdem:SerialNumber"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="SceneInfo" type="nfdem:SceneInfoType">
+        <xs:annotation><xs:documentation>
+            SceneInfo document corresponds to the Scence Information form for crime scene investigation.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="SceneInfoType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SceneInfo element which corresponds to the Scence Information form for crime scene investigatio.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:ArrivalDateTime"/>
+            <xs:element ref="nfdem:GeoLocation"/>
+            <xs:element ref="nfdem:PreparedBy"/>
+            <xs:element ref="nfdem:SceneReferenceInformation"/>
+        </xs:sequence>
+    </xs:complexType>
+   
+    <xs:element name="ChainofCustody" type="nfdem:ChainofCustodyType">
+        <xs:annotation><xs:documentation>
+            ChainofCustody document corresponds to the Chain of Custody form for crime scene investigation.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="ChainofCustodyType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ChainofCustody element which corresponds to the Chain of Custody form for crime scene investigation.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:GeoLocation"/>
+            <xs:element ref="nfdem:Description"/>
+            <xs:element ref="nfdem:AnalysisRequired"/>
+            <xs:element ref="nfdem:ContactPhoneNumber"/>
+            <xs:element ref="nfdem:ContainerQuantity"/>
+            <xs:element ref="nfdem:ContainerType"/>
+            <xs:element ref="nfdem:DateTimeReceived"/>
+            <xs:element ref="nfdem:DateTimeReleased"/>
+            <xs:element ref="nfdem:DateTimeSampleCollected"/>
+            <xs:element ref="cbrn:DoseRateValue"/>
+            <xs:element ref="nfdem:EvidenceIdentificationNumber"/>
+            <xs:element ref="nfdem:ItemStorageLocation"/>
+            <xs:element ref="nfdem:ObtainedFrom"/>
+            <xs:element ref="nfdem:ReceivedBy"/>
+            <xs:element ref="nfdem:ReceivedBySignature"/>
+            <xs:element ref="nfdem:RelinquishedBy"/>
+            <xs:element ref="nfdem:RelinquishedBySignature"/>
+            <xs:element ref="nfdem:SampleCollectedBy"/>
+            <xs:element ref="nfdem:SampleID"/>
+            <xs:element ref="nfdem:SampleMatrix"/>
+            <xs:element ref="nfdem:Signature"/>
+        </xs:sequence>
+    </xs:complexType>
+   
+    <xs:element name="PhotographicLog" type="nfdem:PhotographicLogType">
+        <xs:annotation><xs:documentation>
+            PhotographicLog document corresponds to the Photographic Log for crime scene investigation.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="PhotographicLogType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PhotographicLog element which corresponds to the Photographic Log for crime scene investigation.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element name="Date" type="niem-xs:date">
+                <xs:annotation>
+                    <xs:documentation>
+                        XML Schema type for Date Element.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element ref="nfdem:Description"/>
+            <xs:element name="Photographer" type="nc:PersonType">
+                <xs:annotation>
+                    <xs:documentation>
+                        XML Schema type for Photographer Element.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="PhotoIdentificationNumber" type="nc:IdentificationType">
+                <xs:annotation>
+                    <xs:documentation>
+                        XML Schema type for PhotoIdentificationNumber Element.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>           
+        </xs:sequence>
+    </xs:complexType>
+   
+    <xs:element name="EvidenceRecoveryLogCover" type="nfdem:EvidenceRecoveryLogCoverType">
+        <xs:annotation><xs:documentation>
+            EvidenceRecoveryLogCover document corresponds to the Evidence Recovery Log Cover Sheet for crime scene investigation.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="EvidenceRecoveryLogCoverType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for EvidenceRecoveryLogCover element which corresponds to the Evidence Recovery Log Cover Sheet for crime scene investigation.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:GeoLocation"/>
+            <xs:element ref="nfdem:Agency"/>
+            <xs:element ref="nfdem:ContactPhoneNumber"/>
+            <xs:element ref="nfdem:DateTimeSampleCollected"/>
+            <xs:element ref="nfdem:EvidenceIdentificationNumber"/>
+            <xs:element ref="nfdem:FullName"/>
+            <xs:element ref="nfdem:IdentifyingInformation"/>
+            <xs:element ref="nfdem:OfficeDivision"/>
+            <xs:element ref="nfdem:SampleCollectedBy"/>
+            <xs:element ref="nfdem:SampleID"/>
+            <xs:element ref="nfdem:Signature"/>       
+        </xs:sequence>
+    </xs:complexType>
+  
+    <xs:element name="EvidenceRecoveryLog" type="nfdem:EvidenceRecoveryLogType">
+        <xs:annotation><xs:documentation>
+            EvidenceRecoveryLog document corresponds to the Evidence Recovery Log for crime scene investigation.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="EvidenceRecoveryLogType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for EvidenceRecoveryLog element which corresponds to the Evidence Recovery Log for crime scene investigation.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:GeoLocation"/>
+            <xs:element ref="nfdem:Description"/>
+            <xs:element ref="nfdem:Comment"/>
+            <xs:element ref="nfdem:DateTimeSampleCollected"/>
+            <xs:element ref="nfdem:EvidenceIdentificationNumber"/>
+            <xs:element ref="nfdem:ItemFoundLocation"/>
+            <xs:element ref="nfdem:PackagingMethod"/>
+            <xs:element ref="nfdem:PreparedBy"/>
+            <xs:element ref="nfdem:RecoveredBy"/>            
+        </xs:sequence>
+    </xs:complexType>
+  
+    <xs:element name="CrimeSceneEntryLog" type="nfdem:CrimeSceneEntryLogType">
+        <xs:annotation><xs:documentation>
+            CrimeSceneEntryLog document corresponds to the Crime Scene Entry Log for crime scene investigation.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="CrimeSceneEntryLogType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for CrimeSceneEntryLog element which corresponds to the Crime Scene Entry Log for crime scene investigation.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:GeoLocation"/>
+            <xs:element ref="nfdem:Agency"/>
+            <xs:element ref="nfdem:EntryDateTime"/>
+            <xs:element ref="nfdem:ExitDateTime"/>
+            <xs:element ref="nfdem:PersonEnteringExitingScene"/>
+            <xs:element ref="nfdem:PersonEnteringExitingSceneJobTitle"/>
+            <xs:element ref="nfdem:PersonEnteringExitingSceneSignature"/>
+            <xs:element ref="nfdem:PreparedBy"/>
+            <xs:element ref="nfdem:SceneEntryReason"/>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <xs:element name="RadioactiveMaterialLabel" type="nfdem:RadioactiveMaterialLabelType">
+        <xs:annotation><xs:documentation>
+            RadioactiveMaterialLabel document corresponds to the Radioactive Material Label for crime scene investigation.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="RadioactiveMaterialLabelType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for RadioactiveMaterialLabel element which corresponds to the Radioactive Material Label for crime scene investigation.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:GeoLocation"/>
+            <xs:element ref="nfdem:Description"/>
+            <xs:element ref="nfdem:DateTimeSampleCollected"/>
+            <xs:element ref="cbrn:DoseRateValue"/>
+            <xs:element ref="nfdem:EvidenceIdentificationNumber"/>
+            <xs:element ref="nfdem:MaterialSuspected"/>
+            <xs:element ref="nfdem:SampleCollectedBy"/>
+            <xs:element ref="nfdem:SurveyDateTime"/>
+            <xs:element ref="nfdem:Surveyor"/>
+            <xs:element ref="nfdem:SurveyOrganization"/>
+            <xs:element ref="nfdem:SurveyUnit"/>
+            <xs:element ref="nfdem:SwipeTestResult"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="SampleInfo" type="nfdem:SampleInfoType">
+        <xs:annotation><xs:documentation>
+            SampleInfo document corresponds to the Sample Information form for lab analysis and results.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="SampleInfoType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SampleInfo element which corresponds to the the Sample Information form for lab analysis and results.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:GeoLocation"/>
+            <xs:element ref="nfdem:AirFilterMediaType"/>
+            <xs:element ref="nfdem:AirFilterSize"/>
+            <xs:element ref="nfdem:AirFilterUnit"/>
+            <xs:element ref="nfdem:Comment"/>
+            <xs:element ref="nfdem:DataSourceDescription"/>
+            <xs:element ref="nfdem:DateTimeSampleCollected"/>
+            <xs:element ref="nfdem:DateTimeSamplePrepared"/>
+            <xs:element ref="nfdem:DateTimeStarted"/>
+            <xs:element ref="nfdem:DateTimeStopped"/>
+            <xs:element ref="nfdem:FieldNotes"/>
+            <xs:element ref="nfdem:FieldTeamName"/>
+            <xs:element ref="nfdem:Predictive"/>
+            <xs:element ref="nfdem:PreservativeAdded"/>
+            <xs:element ref="nfdem:ProjectName"/>
+            <xs:element ref="nfdem:AnalysisRequired"/>
+            <xs:element ref="nfdem:SampleCollectedBy"/>
+            <xs:element ref="nfdem:SampleDescription"/>
+            <xs:element ref="nfdem:SampleID"/>
+            <xs:element ref="nfdem:SampleMatrix"/>
+            <xs:element ref="nfdem:SampleQuantity"/>
+            <xs:element ref="nfdem:SampleStatus"/>
+            <xs:element ref="nfdem:SampleType"/>
+            <xs:element ref="nfdem:SampleWeight"/>
+            <xs:element ref="nfdem:SoilGeometry"/>
+            <xs:element ref="nfdem:SoilSampleDepth"/>
+            <xs:element ref="nfdem:SoilSurfaceArea"/>
+            <xs:element ref="nfdem:SpecialInstructions"/>
+            <xs:element ref="nfdem:StartFlowRate"/>
+            <xs:element ref="nfdem:StopFlowRate"/>
+            <xs:element ref="nfdem:TotalVolume"/>
+            <xs:element ref="nfdem:VegetationCollected"/>
+            <xs:element ref="nfdem:VolumeUnit"/>
+        </xs:sequence>
+    </xs:complexType>
+  
+    <xs:element name="ShipmentManifest" type="nfdem:ShipmentManifestType">
+        <xs:annotation><xs:documentation>
+            ShipmentManifest document corresponds to the Shipment Manifest form for lab analysis and results.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="ShipmentManifestType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ShipmentManifest element which corresponds to the the Shipment Manifest form for lab analysis and results.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:ContactDoseRate"/>
+            <xs:element ref="nfdem:ContainerQuantity"/>
+            <xs:element ref="nfdem:DateTimeReceived"/>
+            <xs:element ref="nfdem:DateTimeShipped"/>
+            <xs:element ref="nfdem:ExpeditedShipment"/>
+            <xs:element ref="nfdem:LabAddress"/>
+            <xs:element ref="nfdem:LabName"/>
+            <xs:element ref="nfdem:PackagingInformation"/>
+            <xs:element ref="nfdem:ProjectName"/>
+            <xs:element ref="nfdem:SampleContaminated"/>
+            <xs:element ref="nfdem:SamplePrepRequired"/>
+            <xs:element ref="nfdem:SampleQuantity"/>
+            <xs:element ref="nfdem:SampleRepackaged"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="SampleSummaryInfo" type="nfdem:SampleSummaryInfoType">
+        <xs:annotation><xs:documentation>
+            SampleSummaryInfo document corresponds to the Sample Summary Information form for lab analysis and results.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="SampleSummaryInfoType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SampleSummaryInfo element which corresponds to the the Sample Summary Information form for lab analysis and results.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:GeoLocation"/>
+            <xs:element ref="nfdem:DataSourceDescription"/>
+            <xs:element ref="nfdem:DateTimeSampleCollected"/>
+            <xs:element ref="nfdem:FieldTeamName"/>
+            <xs:element ref="nfdem:ProjectName"/>
+            <xs:element ref="nfdem:SampleCollectedBy"/>
+            <xs:element ref="nfdem:SampleID"/>
+            <xs:element ref="nfdem:SampleMatrix"/>
+            <xs:element ref="nfdem:SampleStatus"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="FieldTeamInfo" type="nfdem:FieldTeamInfoType">
+        <xs:annotation><xs:documentation>
+            FieldTeamInfo document corresponds to the Field Team Information form for lab analysis and results.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="FieldTeamInfoType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for FieldTeamInfo element which corresponds to the the Field Team Information form for lab analysis and results.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:AssignedInstrumentInformation"/>
+            <xs:element ref="nfdem:ContactPhoneNumber"/>
+            <xs:element ref="nfdem:DateTimeCreated"/>
+            <xs:element ref="nfdem:DateTimeStartShift"/>
+            <xs:element ref="nfdem:DateTimeEndShift"/>
+            <xs:element ref="nfdem:DateTimeUpdated"/>
+            <xs:element ref="nfdem:EntryCreatedBy"/>
+            <xs:element ref="nfdem:FieldTeamName"/>
+            <xs:element ref="nfdem:LicensePlateInformation"/>
+            <xs:element ref="nfdem:Mission"/>
+            <xs:element ref="nfdem:MonitoringManagerInformation"/>
+            <xs:element ref="nfdem:MPCDNumber"/>
+            <xs:element ref="nfdem:Organization"/>
+            <xs:element ref="nfdem:RadioNumber"/>
+            <xs:element ref="nfdem:SpecialInstructions"/>
+            <xs:element ref="nfdem:TabletID"/>
+            <xs:element ref="nfdem:TeamLeader"/>
+            <xs:element ref="nfdem:TeamMembers"/>
+            <xs:element ref="nfdem:TeamSupervisorInformation"/>
+            <xs:element ref="nfdem:UpdatedBy"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="FieldMeasurements" type="nfdem:FieldMeasurementsType">
+        <xs:annotation><xs:documentation>
+            FieldMeasurements document corresponds to the Field Measurements form for lab analysis and results.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="FieldMeasurementsType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for FieldMeasurements element which corresponds to the the Field Measurements form for lab analysis and results.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:AssessmentScientistStatus"/>
+            <xs:element ref="nfdem:ReadingDateTime"/>
+            <xs:element ref="nfdem:DoseRateValue"/>
+            <xs:element ref="nfdem:DosimeterType"/>
+            <xs:element ref="nfdem:FieldTeamName"/>
+            <xs:element ref="nfdem:MeasurementUnit"/>
+            <xs:element ref="nfdem:MonitoringManagerStatus"/>
+            <xs:element ref="nfdem:NormalizationStatus"/>
+            <xs:element ref="nfdem:NormalizedUnit"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="AnalysisResults" type="nfdem:AnalysisResultsType">
+        <xs:annotation><xs:documentation>
+            AnalysisResults document corresponds to the the lab analysis and result.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="AnalysisResultsType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for AnalysisResults element which corresponds to the lab analysis and results.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:AcceptanceCriteria"/>
+            <xs:element ref="nfdem:AnalysisDateTime"/>
+            <xs:element ref="nfdem:AnalysisMethod"/>
+            <xs:element ref="nfdem:AnalysisResults"/>
+            <xs:element ref="nfdem:Analyst"/>
+            <xs:element ref="nfdem:AnalyteName"/>
+            <xs:element ref="nfdem:DateTimeSampleCollected"/>
+            <xs:element ref="nfdem:DateTimeSamplePrepared"/>
+            <xs:element ref="nfdem:DilutionFactor"/>
+            <xs:element ref="nfdem:InstrumentInformation"/>
+            <xs:element ref="nfdem:LabSampleID"/>
+            <xs:element ref="nfdem:LCSValue"/>
+            <xs:element ref="nfdem:MethodBlankValue"/>
+            <xs:element ref="nfdem:MethodDetectionLimit"/>
+            <xs:element ref="nfdem:MoisutrePercentage"/>
+            <xs:element ref="cbrn:NuclideMinimumDetectableActivityValue"/>
+            <xs:element ref="nfdem:PercentSolid"/>
+            <xs:element ref="nfdem:ProjectName"/>
+            <xs:element ref="nc:QualityComment"/>
+            <xs:element ref="nfdem:RecoveyPercentage"/>
+            <xs:element ref="nfdem:RelativePercentageDifference"/>
+            <xs:element ref="cbrn:ReportDateTime"/>
+            <xs:element ref="nfdem:ReportingUnit"/>
+            <xs:element ref="nfdem:RequiredDetectionLimit"/>
+            <xs:element ref="nfdem:ReviewedBy"/>
+            <xs:element ref="nfdem:SignatureOfReviewer"/>
+            <xs:element ref="nfdem:SampleCollectedBy"/>
+            <xs:element ref="nfdem:SampleID"/>
+            <xs:element ref="nfdem:SampleMatrix"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="EnvironmentalReport" type="nfdem:EnvironmentalReportType">
+        <xs:annotation><xs:documentation>
+            EnvironmentalReport document corresponds to the Environmental Lab Report for lab analysis and results.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="EnvironmentalReportType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for EnvironmentalReport element which corresponds to the the Environmental Lab Report for lab analysis and results.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:AcceptanceCriteria"/>
+            <xs:element ref="nfdem:AirFilterMediaType"/>
+            <xs:element ref="nfdem:AirFilterSize"/>
+            <xs:element ref="nfdem:AirFilterUnit"/>
+            <xs:element ref="nfdem:AnalysisDateTime"/>
+            <xs:element ref="nfdem:AnalysisMethod"/>
+            <xs:element ref="nfdem:AnalysisResults"/>
+            <xs:element ref="nfdem:Analyst"/>
+            <xs:element ref="nfdem:AnalyteName"/>
+            <xs:element ref="nfdem:DateTimeSampleCollected"/>
+            <xs:element ref="nfdem:DateTimeSamplePrepared"/>
+            <xs:element ref="nfdem:DilutionFactor"/>
+            <xs:element ref="nfdem:InstrumentInformation"/>
+            <xs:element ref="nfdem:LabSampleID"/>
+            <xs:element ref="nfdem:LCSValue"/>
+            <xs:element ref="cbrn:LowerLimitValue"/>
+            <xs:element ref="nfdem:MethodBlankValue"/>
+            <xs:element ref="nfdem:MethodDetectionLimit"/>
+            <xs:element ref="nfdem:MoisutrePercentage"/>
+            <xs:element ref="nfdem:PercentSolid"/>
+            <xs:element ref="nfdem:ProjectName"/>
+            <xs:element ref="nc:QualityComment"/>
+            <xs:element ref="nfdem:RecoveyPercentage"/>
+            <xs:element ref="nfdem:RelativePercentageDifference"/>
+            <xs:element ref="cbrn:ReportDateTime"/>
+            <xs:element ref="nfdem:ReportingUnit"/>
+            <xs:element ref="nfdem:RequiredDetectionLimit"/>
+            <xs:element ref="nfdem:ReviewedBy"/>
+            <xs:element ref="nfdem:SignatureOfReviewer"/>
+            <xs:element ref="nfdem:SampleCollectedBy"/>
+            <xs:element ref="nfdem:SampleID"/>
+            <xs:element ref="nfdem:SampleMatrix"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="GeochemicalReport" type="nfdem:GeochemicalReportType">
+        <xs:annotation><xs:documentation>
+            GeochemicalReport document corresponds to the Geochemical Lab Report for lab analysis and results.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="GeochemicalReportType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for GeochemicalReport element which corresponds to the the Geochemical Lab Report for lab analysis and results.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:AcceptanceCriteria"/>
+            <xs:element ref="nfdem:AnalysisDateTime"/>
+            <xs:element ref="nfdem:AnalysisMethod"/>
+            <xs:element ref="nfdem:AnalysisResults"/>
+            <xs:element ref="nfdem:Analyst"/>
+            <xs:element ref="nfdem:AnalyteName"/>
+            <xs:element ref="nfdem:DateTimeSampleCollected"/>
+            <xs:element ref="nfdem:DateTimeSamplePrepared"/>
+            <xs:element ref="nfdem:DilutionFactor"/>
+            <xs:element ref="nfdem:InstrumentInformation"/>
+            <xs:element ref="nfdem:LabSampleID"/>
+            <xs:element ref="nfdem:LCSValue"/>
+            <xs:element ref="nfdem:MethodBlankValue"/>
+            <xs:element ref="nfdem:MethodDetectionLimit"/>
+            <xs:element ref="nfdem:MoisutrePercentage"/>
+            <xs:element ref="nfdem:PercentSolid"/>
+            <xs:element ref="nfdem:ProjectName"/>
+            <xs:element ref="nc:QualityComment"/>
+            <xs:element ref="nfdem:RecoveyPercentage"/>
+            <xs:element ref="nfdem:RelativePercentageDifference"/>
+            <xs:element ref="cbrn:ReportDateTime"/>
+            <xs:element ref="nfdem:ReportingUnit"/>
+            <xs:element ref="nfdem:RequiredDetectionLimit"/>
+            <xs:element ref="nfdem:ReviewedBy"/>
+            <xs:element ref="nfdem:SignatureOfReviewer"/>
+            <xs:element ref="nfdem:SampleCollectedBy"/>
+            <xs:element ref="nfdem:SampleID"/>
+            <xs:element ref="nfdem:SampleMatrix"/>
+            <xs:element ref="nfdem:SampleWeight"/>           
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="RadiologicalReport" type="nfdem:RadiologicalReportType">
+        <xs:annotation><xs:documentation>
+            RadiologicalReport document corresponds to the Radiological Lab Report for lab analysis and results.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="RadiologicalReportType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for RadiologicalReport element which corresponds to the the Radiological Lab Report for lab analysis and results.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:AcceptanceCriteria"/>
+            <xs:element ref="nfdem:AirFilterMediaType"/>
+            <xs:element ref="nfdem:AirFilterSize"/>
+            <xs:element ref="nfdem:AirFilterUnit"/>
+            <xs:element ref="nfdem:AnalysisDateTime"/>
+            <xs:element ref="nfdem:AnalysisMethod"/>
+            <xs:element ref="nfdem:AnalysisResults"/>
+            <xs:element ref="nfdem:Analyst"/>
+            <xs:element ref="nfdem:AnalyteName"/>
+            <xs:element ref="nfdem:AssessmentScientistStatus"/>
+            <xs:element ref="nfdem:DateTimeSampleCollected"/>
+            <xs:element ref="nfdem:DateTimeSamplePrepared"/>
+            <xs:element ref="nfdem:ReadingDateTime"/>
+            <xs:element ref="nfdem:DilutionFactor"/>
+            <xs:element ref="nfdem:DoseRateValue"/>
+            <xs:element ref="nfdem:DosimeterType"/>
+            <xs:element ref="nfdem:FieldTeamName"/>
+            <xs:element ref="nfdem:InstrumentInformation"/>
+            <xs:element ref="nfdem:LabSampleID"/>
+            <xs:element ref="nfdem:LCSValue"/>
+            <xs:element ref="nfdem:MeasurementUnit"/>
+            <xs:element ref="nfdem:MethodBlankValue"/>
+            <xs:element ref="nfdem:MethodDetectionLimit"/>
+            <xs:element ref="nfdem:MoisutrePercentage"/>
+            <xs:element ref="nfdem:MonitoringManagerStatus"/>
+            <xs:element ref="nfdem:NormalizationStatus"/>
+            <xs:element ref="nfdem:NormalizedUnit"/>
+            <xs:element ref="nfdem:NuclideMinimumDetectableActivity"/>
+            <xs:element ref="nfdem:PercentSolid"/>
+            <xs:element ref="nfdem:ProjectName"/>
+            <xs:element ref="nc:QualityComment"/>
+            <xs:element ref="nfdem:RecoveyPercentage"/>
+            <xs:element ref="nfdem:RelativePercentageDifference"/>
+            <xs:element ref="cbrn:ReportDateTime"/>
+            <xs:element ref="nfdem:ReportingUnit"/>
+            <xs:element ref="nfdem:RequiredDetectionLimit"/>
+            <xs:element ref="nfdem:ReviewedBy"/>
+            <xs:element ref="nfdem:SignatureOfReviewer"/>
+            <xs:element ref="nfdem:SampleCollectedBy"/>
+            <xs:element ref="nfdem:SampleID"/>
+            <xs:element ref="nfdem:SampleMatrix"/>
+            <xs:element ref="nfdem:SampleWeight"/>
+            <xs:element ref="nfdem:NuclideActivityUncertaintyValue"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="BiologicalReport" type="nfdem:BiologicalReportType">
+        <xs:annotation><xs:documentation>
+            BiologicalReport document corresponds to the Biological Lab Report for lab analysis and results.
+        </xs:documentation></xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="BiologicalReportType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for BiologicalReport element which corresponds to the the Biological Lab Report for lab analysis and results.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:AcceptanceCriteria"/>
+            <xs:element ref="nfdem:AnalysisDateTime"/>
+            <xs:element ref="nfdem:AnalysisMethod"/>
+            <xs:element ref="nfdem:AnalysisResults"/>
+            <xs:element ref="nfdem:Analyst"/>
+            <xs:element ref="nfdem:AnalyteName"/>
+            <xs:element ref="nfdem:BiologicalSampleCategory"/>
+            <xs:element ref="nfdem:DateTimeSampleCollected"/>
+            <xs:element ref="nfdem:DateTimeSamplePrepared"/>
+            <xs:element ref="biom:DNALocusIdentification"/>
+            <xs:element ref="biom:DNAAnalysisQuantityCode"/>
+            <xs:element ref="nfdem:DNAAnalysisType"/>
+            <xs:element ref="biom:DNABatchIdentification"/>
+            <xs:element ref="biom:DNADonor"/>
+            <xs:element ref="nfdem:DNADonorCollectionLocation"/>
+            <xs:element ref="biom:DNAElectropherogram"/>
+            <xs:element ref="biom:DNAElectropherogramLadder"/>
+            <xs:element ref="nfdem:DNAKitDescription"/>
+            <xs:element ref="biom:DNALaboratory"/>
+            <xs:element ref="biom:DNAMitochondrialData"/>
+            <xs:element ref="nfdem:DNAProfileComment"/>
+            <xs:element ref="biom:DNAProfileIdentification"/>
+            <xs:element ref="biom:DNAProfileResultCode"/>
+            <xs:element ref="nfdem:DNASampleComment"/>
+            <xs:element ref="biom:DNASampleOriginCode"/>
+            <xs:element ref="biom:DNASample"/>
+            <xs:element ref="nfdem:HasAnimalBlood"/>
+            <xs:element ref="hs:MedicalHealthDetails"/>
+            <xs:element ref="nfdem:InstrumentInformation"/>
+            <xs:element ref="nfdem:LabSampleID"/>
+            <xs:element ref="nfdem:LCSValue"/>
+            <xs:element ref="nfdem:GeoLocation"/>
+            <xs:element ref="nfdem:MethodBlankValue"/>
+            <xs:element ref="nfdem:PresumptiveTests"/>
+            <xs:element ref="nfdem:ProjectName"/>
+            <xs:element ref="nc:QualityComment"/>
+            <xs:element ref="nfdem:RecoveyPercentage"/>
+            <xs:element ref="nfdem:RelativePercentageDifference"/>
+            <xs:element ref="cbrn:ReportDateTime"/>
+            <xs:element ref="nfdem:ReportingUnit"/>            
+            <xs:element ref="nfdem:ReviewedBy"/>
+            <xs:element ref="nfdem:SignatureOfReviewer"/>
+            <xs:element ref="nfdem:SampleCollectedBy"/>
+            <xs:element ref="nfdem:DNASampleCollectionMethod"/>
+            <xs:element ref="nfdem:SampleID"/>
+            <xs:element ref="nfdem:SpecialInstructions"/>
+            <xs:element ref="nfdem:SubjectName"/>            
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:element name="CaseIdentifier" type="nc:IdentificationType">
         <xs:annotation>
             <xs:documentation>
@@ -73,9 +771,1217 @@
     <xs:element name="Description" type="nc:TextType">
         <xs:annotation>
             <xs:documentation>
-                XML Schema type for GeoLocation Element.
+                XML Schema type for Description Element.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
     
+    <xs:element name="FullName" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for FullName Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>    
+    
+    <xs:element name="LightingCondition" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for LightingCondition Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>        
+
+    <xs:element name="PersonPresentOnArrival" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PersonPresentOnArrival Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>  
+
+    <xs:element name="PreparedBy" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PreparedBy Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>  
+
+    <xs:element name="WeatherCondition" type="mmucc:CrashWeatherConditionCodeType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for WeatherCondition Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>  
+
+    <xs:element name="ArrivalDateTime" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ArrivalDateTime Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>  
+
+    <xs:element name="AssistantPreparer" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for AssistantPreparer Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DoseRateValue" type="cbrn:DoseRateType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DoseRateValue Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="InstrumentCalibrationDateTime" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for InstrumentCalibrationDateTime Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="RadInstrumentInformation" type="cbrn:RadInstrumentInformationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for RadInstrumentInformation Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="RadInstrumentModelName" type="cbrn:NonBlankStringType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for RadInstrumentModelName Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SequenceNumber" type="niem-xs:nonNegativeInteger">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SequenceNumber Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="Signature" type="jxdm:SignatureType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for Signature Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SurveyLocationMapInformation" type="cbrn:ImageFileType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SurveyLocationMapInformation Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="Comment" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for Comment Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DosimeterType" type="cbrn:RadDetectorInformationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DosimeterType Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="PersonMonitored" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PersonMonitored Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="PersonMonitoredIdentification" type="nc:IdentificationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PersonMonitoredIdentification Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ReadingDateTime" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ReadingDateTime Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ReadingTimeDuration" type="niem-xs:duration">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ReadingTimeDuration Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SerialNumber" type="cbrn:NonBlankStringType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SerialNumber Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SceneReferenceInformation" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SceneReferenceInformation Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="AnalysisRequired" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for AnalysisRequired Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ContactPhoneNumber" type="nc:TelephoneNumberType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ContactPhoneNumber Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ContainerQuantity" type="nc:QuantityType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ContainerQuantity Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ContainerType" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ContainerType Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DateTimeReceived" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DateTimeReceived Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DateTimeReleased" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DateTimeReleased Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DateTimeSampleCollected" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DateTimeSampleCollected Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="EvidenceIdentificationNumber" type="nc:IdentificationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for EvidenceIdentificationNumber Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ItemStorageLocation" type="nc:LocationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ItemStorageLocation Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ObtainedFrom" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ObtainedFrom Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ReceivedBy" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ReceivedBy Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ReceivedBySignature" type="jxdm:SignatureType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ReceivedBySignature Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="RelinquishedBy" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for RelinquishedBy Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="RelinquishedBySignature" type="jxdm:SignatureType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for RelinquishedBySignature Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SampleCollectedBy" type="nc:PersonType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SampleCollectedBy Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <xs:element name="SampleID" type="niem-xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SampleID Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SampleMatrix" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SampleMatrix Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="Agency" type="nc:OrganizationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for Agency Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="IdentifyingInformation" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for IdentifyingInformation Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="OfficeDivision" type="nc:OrganizationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for OfficeDivision Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ItemFoundLocation" type="cbrn:RelativeLocationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ItemFoundLocation Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="PackagingMethod" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PackagingMethod Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+  
+    <xs:element name="RecoveredBy" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for RecoveredBy Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="EntryDateTime" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for EntryDateTime Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ExitDateTime" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ExitDateTime Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="PersonEnteringExitingScene" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PersonEnteringExitingScene Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="PersonEnteringExitingSceneJobTitle" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PersonEnteringExitingSceneJobTitle Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="PersonEnteringExitingSceneSignature" type="jxdm:SignatureType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PersonEnteringExitingSceneSignature Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SceneEntryReason" type="cbrn:DetectionEventUserEntryDataType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PersonEnteringExitingSceneSignature Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="MaterialSuspected" type="cbrn:RadItemInformationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for MaterialSuspected Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <xs:element name="SurveyDateTime" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SurveyDateTime Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element> 
+
+    <xs:element name="Surveyor" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for Surveyor Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SurveyOrganization" type="nc:OrganizationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SurveyOrganization Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SurveyUnit" type="nc:OrganizationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SurveyUnit Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SwipeTestResult" type="cbrn:AnalysisResultsType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SwipeTestResult Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="AirFilterMediaType" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for AirFilterMediaType Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="AirFilterSize" type="nc:NumericType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for AirFilterSize Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="AirFilterUnit" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for AirFilterUnit Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DataSourceDescription" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DataSourceDescription Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DateTimeSamplePrepared" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DateTimeSamplePrepared Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DateTimeStarted" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DateTimeStarted Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DateTimeStopped" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DateTimeStopped Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="FieldNotes" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for FieldNotes Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="FieldTeamName" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for FieldTeamName Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="Predictive" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for Predictive Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="PreservativeAdded" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PreservativeAdded Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ProjectName" type="niem-xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ProjectName Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SampleDescription" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SampleDescription Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SampleQuantity" type="nc:QuantityType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SampleQuantity Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SampleStatus" type="nc:StatusType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SampleStatus Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SampleType" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SampleType Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SampleWeight" type="nc:WeightMeasureType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SampleWeight Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SoilGeometry" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SoilGeometry Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SoilSampleDepth" type="nc:NumericType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SoilSampleDepth Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SoilSurfaceArea" type="nc:NumericType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SoilSurfaceArea Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SpecialInstructions" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SpecialInstructions Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="StartFlowRate" type="nc:NumericType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for StartFlowRate Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="StopFlowRate" type="nc:NumericType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for StopFlowRate Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="TotalVolume" type="nc:VolumeMeasureType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for TotalVolume Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="VegetationCollected" type="niem-xs:boolean">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for VegetationCollected Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="VolumeUnit" type="unece:VolumeUnitCodeType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for VolumeUnit Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ContactDoseRate" type="cbrn:DoseRateType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ContactDoseRate Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DateTimeShipped" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DateTimeShipped Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ExpeditedShipment" type="niem-xs:boolean">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ExpeditedShipment Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="LabAddress" type="nc:AddressType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for LabAddress Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="LabName" type="nc:ProperNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for LabName Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="PackagingInformation" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PackagingInformation Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SampleContaminated" type="niem-xs:boolean">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SampleContaminated Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SamplePrepRequired" type="niem-xs:boolean">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SamplePrepRequired Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SampleRepackaged" type="niem-xs:boolean">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SampleRepackaged Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="AssignedInstrumentInformation" type="cbrn:RadInstrumentInformationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for AssignedInstrumentInformation Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DateTimeCreated" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DateTimeCreated Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DateTimeStartShift" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DateTimeStartShift Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DateTimeEndShift" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DateTimeEndShift Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DateTimeUpdated" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DateTimeUpdated Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="EntryCreatedBy" type="nc:PersonType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for EntryCreatedBy Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="LicensePlateInformation" type="nc:IdentificationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for LicensePlateInformation Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="Mission" type="nc:MissionType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for Mission Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="MonitoringManagerInformation" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for MonitoringManagerInformation Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="MPCDNumber" type="nc:IdentificationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for MPCDNumber Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="Organization" type="nc:OrganizationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for Organization Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="RadioNumber" type="nc:ContactRadioType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for RadioNumber Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="TabletID" type="cbrn:DeviceIdentificationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for TabletID Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="TeamLeader" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for TeamLeader Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="TeamMembers" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for TeamMembers Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="TeamSupervisorInformation" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for TeamSupervisorInformation Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="UpdatedBy" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for UpdatedBy Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="AcceptanceCriteria" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for AcceptanceCriteria Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="AnalysisDateTime" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for AnalysisDateTime Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="AnalysisMethod" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for AnalysisMethod Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="Analyst" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for Analyst Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="AnalyteName" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for AnalyteName Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DilutionFactor" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DilutionFactor Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="InstrumentInformation" type="nc:ItemType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for InstrumentInformation Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="LabSampleID" type="niem-xs:string">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for LabSampleID Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="LCSValue" type="nc:NumericType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for Lab Control Sample or LCSValue Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="MethodBlankValue" type="cbrn:AnalysisResultsType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for MethodBlankValue Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="MethodDetectionLimit" type="nc:NumericType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for MethodDetectionLimit Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="MoisutrePercentage" type="niem-xs:decimal">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for MoisutrePercentage Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="NuclideMinimumDetectableActivity" type="cbrn:NuclideMDAType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for NuclideMinimumDetectableActivity Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="PercentSolid" type="niem-xs:decimal">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PercentSolid Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="QualityComment" type="nc:CommentType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for QualityComment Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="RecoveyPercentage" type="niem-xs:decimal">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for RecoveyPercentage Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="RelativePercentageDifference" type="nc:NumericType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for RelativePercentageDifference Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ReportDateTime" type="niem-xs:dateTime">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ReportDateTime Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ReportingUnit" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ReportingUnit Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="RequiredDetectionLimit" type="nc:NumericType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for RequiredDetectionLimit Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="ReviewedBy" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for ReviewedBy Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SignatureOfReviewer" type="jxdm:SignatureType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SignatureOfReviewer Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="AssessmentScientistStatus" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for AssessmentScientistStatus Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="MeasurementUnit" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for MeasurementUnit Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="MonitoringManagerStatus" type="nc:StatusType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for MonitoringManagerStatus Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="NormalizationStatus" type="nc:StatusType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for NormalizationStatus Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="NormalizedUnit" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for NormalizedUnit Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="LowerLimitValue" type="cbrn:DoubleType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for LowerLimitValue Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="UpperLimitValue" type="cbrn:DoubleType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for UpperLimitValue Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="NuclideActivityUncertaintyValue" type="cbrn:NuclideActivityUncertaintyType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for NuclideActivityUncertaintyValue Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="BiologicalSampleCategory" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for BiologicalSampleCategory Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DNALocusIdentification" type="nc:IdentificationType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DNALocusIdentification Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DNAAnalysisQuantityCode" type="biom:DNAAnalysisQuantityCodeType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DNAAnalysisQuantityCode Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DNAAnalysisType" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DNAAnalysisType Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DNADonorCollectionLocation" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DNADonorCollectionLocation Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DNAKitDescription" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DNAKitDescription Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DNAProfileComment" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DNAProfileComment Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DNASampleComment" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DNASampleComment Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="HasAnimalBlood" type="niem-xs:boolean">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for HasAnimalBlood Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="PresumptiveTests" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for PresumptiveTests Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="DNASampleCollectionMethod" type="nc:TextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for DNASampleCollectionMethod Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="SubjectName" type="nc:PersonNameTextType">
+        <xs:annotation>
+            <xs:documentation>
+                XML Schema type for SubjectName Element.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
 </xs:schema>
