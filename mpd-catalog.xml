@@ -5,7 +5,7 @@
     xmlns:structures="http://release.niem.gov/niem/structures/3.0/"
     xmlns:nc="http://release.niem.gov/niem/niem-core/3.0/"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://reference.niem.gov/niem/resource/mpd/catalog/3.0/ https://reference.niem.gov/niem/specification/model-package-description/3.0.1/xsd-mpd-catalog/mpd-catalog-3.0.xsd">
+    xsi:schemaLocation="http://www.dtechspace.com/xml-schema/nfdem/0.5/ file:../xsd/extension/nfdem.xsd">
     <c:MPD 
         c:mpdURI="http://example.com/template/1.1/" 
 				c:mpdClassURIList=
@@ -16,18 +16,18 @@
         <c:MPDInformation>
             <c:AuthoritativeSource> 
                 <nc:EntityOrganization>
-                    <nc:OrganizationName>TEMPLATE ORGANIZATION</nc:OrganizationName>
+                    <nc:OrganizationName>D-Tech,LLC</nc:OrganizationName>
                     <nc:OrganizationPrimaryContactInformation>
-                        <nc:ContactWebsiteURI>http://template.example.com</nc:ContactWebsiteURI>
+                        <nc:ContactWebsiteURI>http://www.dtechspace.com/</nc:ContactWebsiteURI>
                     </nc:OrganizationPrimaryContactInformation>
                 </nc:EntityOrganization>
             </c:AuthoritativeSource>
-            <c:CreationDate>2014-10-20</c:CreationDate>
-            <c:StatusText>Alpha</c:StatusText>
+            <c:CreationDate>2011-12-01</c:CreationDate>
+            <c:StatusText>In Progress</c:StatusText>
         </c:MPDInformation>
         <c:IEPConformanceTarget structures:id="Template-IEP">
             <nc:DescriptionText>
-                An IEP class for a timestamped exchange.
+                An IEP class for NFDEM.
             </nc:DescriptionText>
             <c:HasDocumentElement c:qualifiedNameList="template:TemplateExchange"/>
             <c:XMLSchemaValid>

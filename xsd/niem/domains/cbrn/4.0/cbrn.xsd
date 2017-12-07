@@ -172,8 +172,6 @@
         <xs:sequence>
           <xs:element ref="cbrn:RadInstrumentManufacturerName" minOccurs="1" maxOccurs="1"/>
           <xs:element ref="cbrn:RadInstrumentModelName" minOccurs="1" maxOccurs="1"/>
-          <xs:element ref="cbrn:RadInstrumentClassCode" minOccurs="1" maxOccurs="1"/>
-          <xs:element ref="cbrn:RadInstrumentVersion" minOccurs="1" maxOccurs="unbounded"/>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
