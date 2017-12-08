@@ -1,8 +1,8 @@
-2014-10-20
+2017-11-27
 
-    * Initial Release
+    * Initial Draft Release
 
-2017-09-05
+2017-12-08
 
     * Updated the IEPD extension schema, NIEM subset schemas, and sample XML instance to use the NIEM 4.0 release.
     * Updated README.md

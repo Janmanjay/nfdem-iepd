@@ -29,30 +29,65 @@
     <xs:import schemaLocation="../niem/domains/humanServices/4.0/hs.xsd" namespace="http://release.niem.gov/niem/domains/humanServices/4.0/"/>
     <!--xs:import schemaLocation="../niem/utility/structures/4.0/structures.xsd" namespace="http://release.niem.gov/niem/structures/4.0/"/-->
 
-    <xs:element name="CaseList" type="nfdem:Case">
+    <xs:element name="CasePackage" type="nfdem:CasePackageType">
         <xs:annotation>
-            <xs:documentation> CaseList document corresponds to the Case Identifier Form for crime scene investigation.
+            <xs:documentation> A packaged document containing all relevant documents pertaining to a single investigative
+                case associated with an unique CaseIdentifier.
             </xs:documentation>
         </xs:annotation>
     </xs:element>
     
-    <xs:complexType name="Case">
+    <xs:complexType name="CasePackageType">
         <xs:annotation>
-            <xs:documentation> XML Schema type for Case type which consists of the unique Case Identifier and details of the Case for crime scene investigation.
+            <xs:documentation> XML Scheme type for CasePackage.
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element ref="nfdem:CaseIdentifier" minOccurs="1"/>
-            <xs:element ref="nfdem:IncidentManager" minOccurs="1"/>
-            <xs:element ref="nfdem:DateTimeCreated" minOccurs="1"/>
-            <xs:element ref="nfdem:DateTimeUpdated" minOccurs="1"/>
-            <xs:element ref="nfdem:CaseStatus" minOccurs="1"/>
-            <xs:element ref="nfdem:Description" minOccurs="1"/>
-            <xs:element ref="nfdem:PreparedBy" minOccurs="1"/>
-            <xs:element ref="nfdem:CaseCommentList" minOccurs="1"/>
+            <xs:element ref="nfdem:Case"/>
+            <xs:element ref="nfdem:AdminWorksheet" minOccurs="0"/>
+            <xs:element ref="nfdem:RadiationSurveyInfo" minOccurs="0"/>
+            <xs:element ref="nfdem:PersonalRadMonitoringLog" minOccurs="0"/>
+            <xs:element ref="nfdem:SceneInfo" minOccurs="0"/>
+            <xs:element ref="nfdem:CrimeSceneEntryLog" minOccurs="0"/>
+            <xs:element ref="nfdem:EvidenceRecoveryLogCover" minOccurs="0"/>
+            <xs:element ref="nfdem:EvidenceRecoveryLog" minOccurs="0"/>
+            <xs:element ref="nfdem:PhotographicLog" minOccurs="0"/>
+            <xs:element ref="nfdem:RadioactiveMaterialLabel" minOccurs="0"/>
+            <xs:element ref="nfdem:FieldEvidenceChainOfCustody" minOccurs="0"/>
+            <xs:element ref="nfdem:EnvironmentalChainOfCustody" minOccurs="0"/>
+            <xs:element ref="nfdem:GeoChemicalChainOfCustody" minOccurs="0"/>
+            <xs:element ref="nfdem:RadiologicalChainOfCustody" minOccurs="0"/>
+            <xs:element ref="nfdem:GeochemicalReport" minOccurs="0"/>
+            <xs:element ref="nfdem:EnvironmentalReport" minOccurs="0"/>
+            <xs:element ref="nfdem:RadiologicalReport" minOccurs="0"/>
+            <xs:element ref="nfdem:BiologicalReport" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
-
+    
+    <xs:element name="Case" type="nfdem:CaseType">
+        <xs:annotation>
+            <xs:documentation> A packaged document containing all relevant documents a single CaseIdentifier.
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    
+    <xs:complexType name="CaseType">
+        <xs:annotation>
+            <xs:documentation> XML Schema type for Case type which consists of the unique Case Identifier and details of CaseList for crime scene investigation.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="nfdem:CaseIdentifier"/>
+            <xs:element ref="nfdem:IncidentManager"/>
+            <xs:element ref="nfdem:DateTimeCreated"/>
+            <xs:element ref="nfdem:DateTimeUpdated"/>
+            <xs:element ref="nfdem:CaseStatus"/>
+            <xs:element ref="nfdem:Description"/>
+            <xs:element ref="nfdem:Notes"/>
+            <xs:element ref="nfdem:PreparedBy"/>
+        </xs:sequence>
+    </xs:complexType>
+    
     <xs:element name="AdminWorksheet" type="nfdem:AdminWorksheetType">
         <xs:annotation>
             <xs:documentation> AdminWorksheet document corresponds to the Administrative Worksheet
@@ -162,65 +197,53 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:element name="GeneralChainOfCustody" type="nfdem:GeneralChainOfCustodyType">
+    <xs:complexType name="ChainOfCustodyType" abstract="true">
         <xs:annotation>
-            <xs:documentation> GeneralChainOfCustody document corresponds to the generic Chain of
-                Custody form for crime scene investigation. </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:complexType name="GeneralChainOfCustodyType">
-        <xs:annotation>
-            <xs:documentation> XML Schema type for GeneralChainOfCustody element which corresponds
-                to the generic Chain of Custody form for crime scene investigation.
+            <xs:documentation> Abstract type ChainOfCustody which serves as a base 
+                for concrete ChainOfCustody types.
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
             <xs:element ref="nfdem:CaseIdentifier" minOccurs="1"/>
+            <xs:element ref="nfdem:ProjectName" minOccurs="0"/>
             <xs:element ref="nfdem:GeoLocation" minOccurs="1"/>
-            <xs:element ref="nfdem:ObtainedFrom" minOccurs="1"/>
             <xs:element ref="nfdem:Description" minOccurs="0"/>
             <xs:element ref="nfdem:ContactInformation" minOccurs="1"/>
-            <xs:element ref="nfdem:BillingInformation" minOccurs="1"/>
-            <xs:element ref="nfdem:ProjectName" minOccurs="1"/>
-            <xs:element ref="nfdem:EvidenceIdentificationNumber" minOccurs="0"/>
-            <xs:element ref="nfdem:TurnAroundTime" minOccurs="1"/>
-            <xs:element ref="nfdem:SampleCollectedBy" minOccurs="1"/>
-            <xs:element ref="nfdem:Signature" minOccurs="1"/>
+            <!--xs:element ref="nfdem:EvidenceIdentificationNumber" minOccurs="1"/-->
+            <!--xs:element ref="nfdem:TurnAroundTime" minOccurs="1"/-->
+            <!--xs:element ref="nfdem:SampleCollectedBy" minOccurs="1"/-->
             <xs:element ref="nfdem:SampleQuantity" minOccurs="1"/>
-            <xs:element ref="nfdem:ItemStorageLocation" minOccurs="1"/>
-            <xs:element ref="cbrn:DoseRateValue" minOccurs="1"/>
-            <xs:element ref="nfdem:SampleList" minOccurs="1"/>
+            <xs:element ref="nfdem:ItemStorageLocation" minOccurs="0"/>
+            <xs:element ref="cbrn:DoseRateValue" minOccurs="0"/>
+            <!--xs:element ref="nfdem:SampleList" minOccurs="1"/-->
             <xs:element ref="nfdem:CustodyList" minOccurs="1"/>
+            <xs:element ref="nfdem:Signature" minOccurs="1"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:element name="FieldEvidenceChainOfCustody" type="nfdem:FieldEvidenceChainofCustodyType">
+    <xs:element name="FieldEvidenceChainOfCustody" type="nfdem:FieldEvidenceChainOfCustodyType">
         <xs:annotation>
-            <xs:documentation> FieldEvidenceChainOfCustody document corresponds to the Chain of Custody form for the field evidence collected as part of the crime scene investigation. 
+            <xs:documentation> FieldEvidenceChainOfCustody document corresponds to the Chain of Custody form 
+                for the field evidence collected as part of the crime scene investigation. 
             </xs:documentation>
         </xs:annotation>
     </xs:element>
     
-    <xs:complexType name="FieldEvidenceChainofCustodyType">
+    <xs:complexType name="FieldEvidenceChainOfCustodyType">
         <xs:annotation>
-            <xs:documentation> XML Schema type for FieldEvidenceChainOfCustody element which corresponds to the Chain of Custody form for the field evidence collected as part of the crime scene investigation.
+            <xs:documentation> XML Schema type for FieldEvidenceChainOfCustody element which corresponds to the Chain of Custody 
+                form for the field evidence collected as part of the crime scene investigation.
             </xs:documentation>
         </xs:annotation>
-        <xs:sequence>
-            <xs:element ref="nfdem:CaseIdentifier" minOccurs="1"/>
-            <xs:element ref="nfdem:GeoLocation" minOccurs="1"/>
-            <xs:element ref="nfdem:ObtainedFrom" minOccurs="1"/>
-            <xs:element ref="nfdem:Description" minOccurs="0"/>
-            <xs:element ref="nfdem:ContactInformation" minOccurs="1"/>
-            <xs:element ref="nfdem:ProjectName" minOccurs="1"/>
-            <xs:element ref="nfdem:SampleCollectedBy" minOccurs="1"/>
-            <xs:element ref="nfdem:Signature" minOccurs="1"/>
-            <xs:element ref="nfdem:SampleQuantity" minOccurs="1"/>
-            <xs:element ref="nfdem:ItemStorageLocation" minOccurs="1"/>
-            <xs:element ref="nfdem:FieldEvidenceList" minOccurs="1"/>
-            <xs:element ref="nfdem:CustodyList" minOccurs="1"/>
-        </xs:sequence>
+        <xs:complexContent>
+            <xs:extension base="nfdem:ChainOfCustodyType">
+                <xs:sequence>
+                    <xs:element ref="nfdem:SampleQuantity" minOccurs="1"/>
+                    <xs:element ref="nfdem:SampleList" minOccurs="1"/>
+                    <xs:element ref="nfdem:CustodyList" minOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
     </xs:complexType>
 
     <xs:element name="EnvironmentalChainOfCustody" type="nfdem:EnvironmentalChainOfCustodyType">
@@ -232,61 +255,44 @@
 
     <xs:complexType name="EnvironmentalChainOfCustodyType">
         <xs:annotation>
-            <xs:documentation> XML Schema type for EnvironmentalChainOfCustody element which
-                corresponds to the Chain of Custody form for Environmental Analysis.
+            <xs:documentation> XML Schema type for EnvironmentalChainOfCustody element.
             </xs:documentation>
         </xs:annotation>
-        <xs:sequence>
-            <xs:element ref="nfdem:CaseIdentifier" minOccurs="1"/>
-            <xs:element ref="nfdem:GeoLocation" minOccurs="1"/>
-            <xs:element ref="nfdem:ObtainedFrom" minOccurs="1"/>
-            <xs:element ref="nfdem:Description" minOccurs="0"/>
-            <xs:element ref="nfdem:ContactInformation" minOccurs="1"/>
-            <xs:element ref="nfdem:BillingInformation" minOccurs="1"/>
-            <xs:element ref="nfdem:ProjectName" minOccurs="1"/>
-            <xs:element ref="nfdem:EvidenceIdentificationNumber" minOccurs="0"/>
-            <xs:element ref="nfdem:TurnAroundTime" minOccurs="1"/>
-            <xs:element ref="nfdem:SampleCollectedBy" minOccurs="1"/>
-            <xs:element ref="nfdem:Signature" minOccurs="1"/>
-            <xs:element ref="nfdem:SampleQuantity" minOccurs="1"/>
-            <xs:element ref="nfdem:ItemStorageLocation" minOccurs="1"/>
-            <xs:element ref="cbrn:DoseRateValue" minOccurs="1"/>
-            <xs:element ref="nfdem:EnvironmentalSampleList" minOccurs="1"/>
-            <xs:element ref="nfdem:CustodyList" minOccurs="1"/>
-        </xs:sequence>
+        <xs:complexContent>
+            <xs:extension base="nfdem:ChainOfCustodyType">
+                <xs:sequence>        
+                    <xs:element ref="nfdem:BillingInformation" minOccurs="1"/>
+                    <xs:element ref="nfdem:TurnAroundTime" minOccurs="1"/>
+                    <xs:element ref="nfdem:SampleCollectedBy" minOccurs="1"/>
+                    <xs:element ref="nfdem:EnvironmentalSampleList" minOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
     </xs:complexType>
 
-    <xs:element name="GeoChemicaChainOfCustody" type="nfdem:GeoChemicaChainOfCustodyType">
+    <xs:element name="GeoChemicalChainOfCustody" type="nfdem:GeoChemicalChainOfCustodyType">
         <xs:annotation>
             <xs:documentation> GeoChemicaChainOfCustodyType document corresponds to the Chain of
                 Custody form for GeoChemical Analysis. </xs:documentation>
         </xs:annotation>
     </xs:element>
     
-    <xs:complexType name="GeoChemicaChainOfCustodyType">
+    <xs:complexType name="GeoChemicalChainOfCustodyType">
         <xs:annotation>
             <xs:documentation> XML Schema type for GeoChemicaChainOfCustodyType element which
                 corresponds to the Chain of Custody form for GeoChemical Analysis.
             </xs:documentation>
         </xs:annotation>
-        <xs:sequence>
-            <xs:element ref="nfdem:CaseIdentifier" minOccurs="1"/>
-            <xs:element ref="nfdem:GeoLocation" minOccurs="1"/>
-            <xs:element ref="nfdem:ObtainedFrom" minOccurs="1"/>
-            <xs:element ref="nfdem:Description" minOccurs="0"/>
-            <xs:element ref="nfdem:ContactInformation" minOccurs="1"/>
-            <xs:element ref="nfdem:BillingInformation" minOccurs="1"/>
-            <xs:element ref="nfdem:ProjectName" minOccurs="1"/>
-            <xs:element ref="nfdem:EvidenceIdentificationNumber" minOccurs="0"/>
-            <xs:element ref="nfdem:TurnAroundTime" minOccurs="1"/>
-            <xs:element ref="nfdem:SampleCollectedBy" minOccurs="1"/>
-            <xs:element ref="nfdem:Signature" minOccurs="1"/>
-            <xs:element ref="nfdem:SampleQuantity" minOccurs="1"/>
-            <xs:element ref="nfdem:ItemStorageLocation" minOccurs="1"/>
-            <xs:element ref="cbrn:DoseRateValue" minOccurs="1"/>
-            <xs:element ref="nfdem:GeoChemicalSampleList" minOccurs="1"/>
-            <xs:element ref="nfdem:CustodyList" minOccurs="1"/>
-        </xs:sequence>
+        <xs:complexContent>
+            <xs:extension base="nfdem:ChainOfCustodyType">
+                <xs:sequence>        
+                    <xs:element ref="nfdem:BillingInformation" minOccurs="1"/>
+                    <xs:element ref="nfdem:TurnAroundTime" minOccurs="1"/>
+                    <xs:element ref="nfdem:SampleCollectedBy" minOccurs="1"/>
+                    <xs:element ref="nfdem:GeoChemicalSampleList" minOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
     </xs:complexType>
 
     <xs:element name="RadiologicalChainOfCustody" type="nfdem:RadiologicalChainOfCustodyType">
@@ -301,24 +307,16 @@
             <xs:documentation> XML Schema type for RadiologicalChainOfCustody element which corresponds
                 to the Chain of Custody form for Radiological Analysis. </xs:documentation>
         </xs:annotation>
-        <xs:sequence>
-            <xs:element ref="nfdem:CaseIdentifier" minOccurs="1"/>
-            <xs:element ref="nfdem:GeoLocation" minOccurs="1"/>
-            <xs:element ref="nfdem:ObtainedFrom" minOccurs="1"/>
-            <xs:element ref="nfdem:Description" minOccurs="0"/>
-            <xs:element ref="nfdem:ContactInformation" minOccurs="1"/>
-            <xs:element ref="nfdem:BillingInformation" minOccurs="1"/>
-            <xs:element ref="nfdem:ProjectName" minOccurs="1"/>
-            <xs:element ref="nfdem:EvidenceIdentificationNumber" minOccurs="0"/>
-            <xs:element ref="nfdem:TurnAroundTime" minOccurs="1"/>
-            <xs:element ref="nfdem:SampleCollectedBy" minOccurs="1"/>
-            <xs:element ref="nfdem:Signature" minOccurs="1"/>
-            <xs:element ref="nfdem:SampleQuantity" minOccurs="1"/>
-            <xs:element ref="nfdem:ItemStorageLocation" minOccurs="1"/>
-            <xs:element ref="cbrn:DoseRateValue" minOccurs="1"/>
-            <xs:element ref="nfdem:RadiologicalSampleList" minOccurs="1"/>
-            <xs:element ref="nfdem:CustodyList" minOccurs="1"/>
-        </xs:sequence>
+        <xs:complexContent>
+            <xs:extension base="nfdem:ChainOfCustodyType">
+                <xs:sequence>        
+                    <xs:element ref="nfdem:BillingInformation" minOccurs="1"/>
+                    <xs:element ref="nfdem:TurnAroundTime" minOccurs="1"/>
+                    <xs:element ref="nfdem:SampleCollectedBy" minOccurs="1"/>
+                    <xs:element ref="nfdem:RadiologicalSampleList" minOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>            
     </xs:complexType>
 
     <xs:element name="PhotographicLog" type="nfdem:PhotographicLogType">
@@ -425,19 +423,14 @@
         </xs:annotation>
         <xs:sequence>
             <xs:element ref="nfdem:CaseIdentifier" minOccurs="1"/>
-            <xs:element ref="nfdem:GeoLocation" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element ref="nfdem:Description" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element ref="nfdem:DateTimeSampleCollected" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element ref="cbrn:DoseRateValue" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element ref="nfdem:EvidenceIdentificationNumber" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element ref="nfdem:MaterialSuspected" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element ref="nfdem:SampleCollectedBy" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element ref="nfdem:SurveyDateTime" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element ref="nfdem:Surveyor" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element ref="nfdem:SurveyOrganization" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element ref="nfdem:SurveyUnit" minOccurs="1" maxOccurs="unbounded"/>
-            <xs:element ref="nfdem:SwipeTestResult" minOccurs="1" maxOccurs="unbounded"/>
-        </xs:sequence>
+            <xs:element ref="nfdem:EvidenceID" minOccurs="1"/>
+            <xs:element ref="nfdem:GeoLocation" minOccurs="1"/>
+            <xs:element ref="nfdem:Description" minOccurs="1"/>
+            <xs:element ref="nfdem:DateTimeSampleCollected" minOccurs="1"/>
+            <xs:element ref="cbrn:DoseRateValue" minOccurs="1"/>
+            <xs:element ref="nfdem:MaterialSuspected" minOccurs="0"/>
+            <xs:element ref="nfdem:SampleCollectedBy" minOccurs="1"/>
+       </xs:sequence>
     </xs:complexType>
 
     <xs:element name="EnvironmentalReport" type="nfdem:EnvironmentalReportType">
@@ -613,8 +606,6 @@
             <xs:element ref="cbrn:ReportDateTime" minOccurs="1"/>
             <xs:element ref="nfdem:ReviewedBy" minOccurs="1"/>
             <xs:element ref="nfdem:SignatureOfReviewer" minOccurs="1"/>
-
-
         </xs:sequence>
     </xs:complexType>
 
@@ -712,7 +703,7 @@
                 <xs:element name="Address" type="nc:TextType"/>
                 <xs:element ref="nfdem:ContactPhoneNumber"/>
                 <xs:element name="EmailAddress" type="niem-xs:string"/>
-                <xs:element name="PurchaseOrder" type="niem-xs:string"/>
+                <xs:element name="PurchaseOrderNumber" type="niem-xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -965,52 +956,34 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:complexType name="SampleType">
+        <xs:annotation>
+            <xs:documentation>XML Schema type for Sample element.</xs:documentation>
+        </xs:annotation>        
+        <xs:sequence>
+            <xs:element ref="nfdem:SampleID" minOccurs="1"/>
+            <xs:element ref="nfdem:SampleWeight" minOccurs="1"/>
+            <xs:element ref="nfdem:PreservativeAdded" minOccurs="1"/>
+            <xs:element ref="nfdem:ContainerQuantity" minOccurs="1"/>
+            <xs:element ref="nfdem:ContainerType" minOccurs="1"/>
+            <xs:element ref="nfdem:DateTimeSampleCollected" minOccurs="1"/>
+            <xs:element ref="nfdem:Description" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:element name="Sample" type="nfdem:SampleType">
+        <xs:annotation>
+            <xs:documentation>Sample element corresponds to a sample collected in a field investigation.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
     <xs:element name="SampleList">
         <xs:annotation>
-            <xs:documentation> SampleList elements refer to the list of sample details in the Chain
-                of Custody form. </xs:documentation>
+            <xs:documentation> List of detailed samples in a Chain of Custody form  pertaining to a field investigation. </xs:documentation>
         </xs:annotation>
         <xs:complexType>
             <xs:sequence>
                 <xs:element ref="nfdem:Sample" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:element name="Sample">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="nfdem:SampleID" minOccurs="1"/>
-                <xs:element ref="nfdem:SampleMatrix" minOccurs="1"/>
-                <xs:element ref="nfdem:PreservativeAdded" minOccurs="1"/>
-                <xs:element ref="nfdem:ContainerQuantity" minOccurs="1"/>
-                <xs:element ref="nfdem:ContainerType" minOccurs="1"/>
-                <xs:element ref="nfdem:DateTimeSampleCollected" minOccurs="1"/>
-                <xs:element ref="nfdem:AnalysisRequired" minOccurs="1"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:element name="FieldEvidenceList">
-        <xs:annotation>
-            <xs:documentation> FieldEvidenceList elements refer to the list of sample details in the Field Evidence Chain of Custody form. </xs:documentation>
-        </xs:annotation>
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="nfdem:FieldEvidence" maxOccurs="unbounded"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-    
-    <xs:element name="FieldEvidence">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="nfdem:EvidenceIdentificationNumber" minOccurs="1"/>
-                <xs:element ref="nfdem:Description" minOccurs="1"/>
-                <xs:element ref="nfdem:PreservativeAdded" minOccurs="1"/>
-                <xs:element ref="nfdem:ContainerQuantity" minOccurs="1"/>
-                <xs:element ref="nfdem:ContainerType" minOccurs="1"/>
-                <xs:element ref="nfdem:DateTimeSampleCollected" minOccurs="1"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -1029,35 +1002,33 @@
 
     <xs:element name="EnvironmentalSample">
         <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="nfdem:SampleID" minOccurs="1"/>
-                <xs:element ref="nfdem:SampleMatrix" minOccurs="1"/>
-                <xs:element ref="nfdem:PreservativeAdded" minOccurs="1"/>
-                <xs:element ref="nfdem:ContainerQuantity" minOccurs="1"/>
-                <xs:element ref="nfdem:ContainerType" minOccurs="1"/>
-                <xs:element ref="nfdem:DateTimeSampleCollected" minOccurs="1"/>
-                <xs:element ref="nfdem:EnvironmentalAnalysis" minOccurs="1"/>
-            </xs:sequence>
+            <xs:complexContent>
+                <xs:extension base="nfdem:SampleType">
+                    <xs:sequence>
+                        <xs:element ref="nfdem:EnvironmentalAnalysis" minOccurs="1"/>                   
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
         </xs:complexType>
     </xs:element>
 
     <xs:element name="EnvironmentalAnalysis">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="FullMetalScan" type="xs:boolean"/>
-                <xs:element name="HydrideMetals" type="xs:boolean"/>
-                <xs:element name="pH" type="xs:boolean"/>
-                <xs:element name="ElectricalConductivity" type="xs:boolean"/>
-                <xs:element name="Chloride" type="xs:boolean"/>
-                <xs:element name="Cyanide" type="xs:boolean"/>
-                <xs:element name="HexavalentChromium" type="xs:boolean"/>
-                <xs:element name="InorganicAnalysis" type="xs:boolean"/>
-                <xs:element name="NutrientAnalysis" type="xs:boolean"/>
-                <xs:element name="VOCs" type="xs:boolean"/>
-                <xs:element name="PCBs" type="xs:boolean"/>
-                <xs:element name="PAHs" type="xs:boolean"/>
-                <xs:element name="Pesticides" type="xs:boolean"/>
-                <xs:element name="Herbicides" type="xs:boolean"/>
+                <xs:element name="FullMetalScan" type="niem-xs:boolean"/>
+                <xs:element name="HydrideMetals" type="niem-xs:boolean"/>
+                <xs:element name="pH" type="niem-xs:boolean"/>
+                <xs:element name="ElectricalConductivity" type="niem-xs:boolean"/>
+                <xs:element name="Chloride" type="niem-xs:boolean"/>
+                <xs:element name="Cyanide" type="niem-xs:boolean"/>
+                <xs:element name="HexavalentChromium" type="niem-xs:boolean"/>
+                <xs:element name="InorganicAnalysis" type="niem-xs:boolean"/>
+                <xs:element name="NutrientAnalysis" type="niem-xs:boolean"/>
+                <xs:element name="VOCs" type="niem-xs:boolean"/>
+                <xs:element name="PCBs" type="niem-xs:boolean"/>
+                <xs:element name="PAHs" type="niem-xs:boolean"/>
+                <xs:element name="Pesticides" type="niem-xs:boolean"/>
+                <xs:element name="Herbicides" type="niem-xs:boolean"/>
                 <xs:element name="Other" type="niem-xs:string"/>
             </xs:sequence>
         </xs:complexType>
@@ -1077,34 +1048,32 @@
     
     <xs:element name="GeoChemicalSample">
         <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="nfdem:SampleID" minOccurs="1"/>
-                <xs:element ref="nfdem:SampleMatrix" minOccurs="1"/>
-                <xs:element ref="nfdem:PreservativeAdded" minOccurs="1"/>
-                <xs:element ref="nfdem:ContainerQuantity" minOccurs="1"/>
-                <xs:element ref="nfdem:ContainerType" minOccurs="1"/>
-                <xs:element ref="nfdem:DateTimeSampleCollected" minOccurs="1"/>
-                <xs:element ref="nfdem:GeoChemicalAnalysis" minOccurs="1"/>
-            </xs:sequence>
+            <xs:complexContent>
+                <xs:extension base="nfdem:SampleType">                    
+                    <xs:sequence>
+                        <xs:element ref="nfdem:GeoChemicalAnalysis" minOccurs="1"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
         </xs:complexType>
     </xs:element>
     
     <xs:element name="GeoChemicalAnalysis">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="PreciousMetalsAnalysis" type="xs:boolean"/>
-                <xs:element name="BaseMetals" type="xs:boolean"/>
-                <xs:element name="Uranium" type="xs:boolean"/>
-                <xs:element name="RareEarthElements" type="xs:boolean"/>
-                <xs:element name="AcidRockDrainage" type="xs:boolean"/>
-                <xs:element name="LanthanideAnalysis" type="xs:boolean"/>
-                <xs:element name="Lithogeochemistry" type="xs:boolean"/>
-                <xs:element name="SulfideAnalysis" type="xs:boolean"/>
-                <xs:element name="ClassicalAssays" type="xs:boolean"/>
-                <xs:element name="AcidBaseAccounting" type="xs:boolean"/>
-                <xs:element name="WholeRockAnalysisByXRF" type="xs:boolean"/>
-                <xs:element name="CarbonAnalysis" type="xs:boolean"/>
-                <xs:element name="SulfurAnalysis" type="xs:boolean"/>
+                <xs:element name="PreciousMetalsAnalysis" type="niem-xs:boolean"/>
+                <xs:element name="BaseMetals" type="niem-xs:boolean"/>
+                <xs:element name="Uranium" type="niem-xs:boolean"/>
+                <xs:element name="RareEarthElements" type="niem-xs:boolean"/>
+                <xs:element name="AcidRockDrainage" type="niem-xs:boolean"/>
+                <xs:element name="LanthanideAnalysis" type="niem-xs:boolean"/>
+                <xs:element name="Lithogeochemistry" type="niem-xs:boolean"/>
+                <xs:element name="SulfideAnalysis" type="niem-xs:boolean"/>
+                <xs:element name="ClassicalAssays" type="niem-xs:boolean"/>
+                <xs:element name="AcidBaseAccounting" type="niem-xs:boolean"/>
+                <xs:element name="WholeRockAnalysisByXRF" type="niem-xs:boolean"/>
+                <xs:element name="CarbonAnalysis" type="niem-xs:boolean"/>
+                <xs:element name="SulfurAnalysis" type="niem-xs:boolean"/>
                 <xs:element name="Other" type="niem-xs:string"/>
             </xs:sequence>
         </xs:complexType>
@@ -1124,15 +1093,13 @@
 
     <xs:element name="RadiologicalSample">
         <xs:complexType>
-            <xs:sequence>
-                <xs:element ref="nfdem:SampleID" minOccurs="1"/>
-                <xs:element ref="nfdem:SampleMatrix" minOccurs="1"/>
-                <xs:element ref="nfdem:PreservativeAdded" minOccurs="1"/>
-                <xs:element ref="nfdem:ContainerQuantity" minOccurs="1"/>
-                <xs:element ref="nfdem:ContainerType" minOccurs="1"/>
-                <xs:element ref="nfdem:DateTimeSampleCollected" minOccurs="1"/>
-                <xs:element ref="nfdem:RadiologicalAnalysis" minOccurs="1"/>
-            </xs:sequence>
+            <xs:complexContent>
+                <xs:extension base="nfdem:SampleType">                    
+                    <xs:sequence>
+                        <xs:element ref="nfdem:RadiologicalAnalysis" minOccurs="1"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>            
         </xs:complexType>
     </xs:element>
 
@@ -1264,6 +1231,25 @@
             </xs:documentation>
         </xs:annotation>
     </xs:element>
+    
+    <xs:element name="Notes"> 
+        <xs:annotation>
+            <xs:documentation> Comments defined by a list of notes. </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Note">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="nfdem:Comment"/>
+                            <xs:element name="MadeBy" type="nc:PersonNameTextType" minOccurs="0"/>
+                            <xs:element name="DateTimeCreated" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
     <xs:element name="DosimeterType" type="cbrn:RadDetectorInformationType">
         <xs:annotation>
@@ -1312,12 +1298,6 @@
         </xs:annotation>
     </xs:element>
 
-    <xs:element name="AnalysisRequired" type="nc:TextType">
-        <xs:annotation>
-            <xs:documentation> XML Schema type for AnalysisRequired Element. </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
     <xs:element name="ContactPhoneNumber" type="niem-xs:string">
         <xs:annotation>
             <xs:documentation> ContactPhoneNumber Element contains the telephone number of the person or contact. </xs:documentation>
@@ -1355,7 +1335,7 @@
         </xs:annotation>
     </xs:element>
 
-    <xs:element name="EvidenceIdentificationNumber" type="niem-xs:string">
+    <xs:element name="EvidenceID" type="niem-xs:string">
         <xs:annotation>
             <xs:documentation> EvidenceIdentificationNumber Element corrensponds to the unique identifier assigned to an evidence or item.
             </xs:documentation>
@@ -1365,13 +1345,6 @@
     <xs:element name="ItemStorageLocation" type="nc:TextType">
         <xs:annotation>
             <xs:documentation> ItemStorageLocation Element corresponds to the description of the item is stored. </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="ObtainedFrom" type="nc:TextType">
-        <xs:annotation>
-            <xs:documentation> ObtainedFrom Element provides the description of where or from whom the item was obtained from.
-            </xs:documentation>
         </xs:annotation>
     </xs:element>
 
@@ -1496,27 +1469,6 @@
         </xs:annotation>
     </xs:element>
 
-    <xs:element name="Surveyor" type="nc:PersonNameTextType">
-        <xs:annotation>
-            <xs:documentation> Surveyor Element represents the name of the surveyor. 
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="SurveyOrganization" type="nc:OrganizationType">
-        <xs:annotation>
-            <xs:documentation> SurveyOrganization Element represents the name of organization conducting the survey. 
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
-    <xs:element name="SurveyUnit" type="nc:OrganizationType">
-        <xs:annotation>
-            <xs:documentation> SurveyUnit Element represents the unit within the organization conducting the survey. 
-            </xs:documentation>
-        </xs:annotation>
-    </xs:element>
-
     <xs:element name="SwipeTestResult" type="cbrn:AnalysisResultsType">
         <xs:annotation>
             <xs:documentation> SwipeTestResult Element represents the radiation survey data or the result from the swipe test. 
@@ -1575,8 +1527,6 @@
         </xs:annotation>
     </xs:element>
 
-    
-
     <xs:element name="PreservativeAdded" type="nc:TextType">
         <xs:annotation>
             <xs:documentation> PreservativeAdded Element corresponds to the description in the Chain of Custody form about the preservative added to the sample. 
@@ -1584,22 +1534,20 @@
         </xs:annotation>
     </xs:element>
 
-    <xs:element name="ProjectName" type="niem-xs:string">
+    <xs:element name="ProjectName" type="nc:TextType">
         <xs:annotation>
             <xs:documentation> ProjectName Element represents the name of the project or event. 
             </xs:documentation>
         </xs:annotation>
     </xs:element>
 
-    <xs:element name="SampleQuantity" type="nc:QuantityType">
+    <xs:element name="SampleQuantity" type="niem-xs:nonNegativeInteger">
         <xs:annotation>
             <xs:documentation> SampleQuantity Element corresponds to the number of samples or its quantity. 
             </xs:documentation>
         </xs:annotation>
     </xs:element>
   
-    
-
     <xs:element name="SampleWeight" type="nfdem:SampleWeightType">
         <xs:annotation>
             <xs:documentation> SampleWeight Element represents the weight of the sample logged in on arrival at the lab and is presented in the lab report. 
@@ -1612,11 +1560,7 @@
             <xs:documentation> SpecialInstructions Element refers to the project related special instructions and also for sample handling and analysis. 
             </xs:documentation>
         </xs:annotation>
-    </xs:element>
-
-    
-
-    
+    </xs:element> 
 
     <xs:element name="VolumeUnit" type="unece:VolumeUnitCodeType">
         <xs:annotation>
